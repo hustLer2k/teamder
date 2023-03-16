@@ -1,0 +1,44 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    max-width: 30rem;
+    width: 80%;
+    height: 30rem;
+    margin: calc(50vh - 12.5rem) auto;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    color: purple;
+}
+
+.wrapper h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.wrapper > p > button {
+    border: none;
+    background-color: transparent;
+    font: inherit;
+    color: var(--primary-color);
+}
+
+.submit {
+    height: 3rem;
+    width: 80%;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font: bold 1.1em Roboto, sans-serif;
+    cursor: pointer;
+}
+
+.error {
+    color: var(--error-color);
+    font-weight: bold;
+}

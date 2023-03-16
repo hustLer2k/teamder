@@ -1,14 +1,13 @@
 div.input-block {
     position: relative;
     width: 80%;
-    text-align: center;
 }
 
 div.input-block input {
     font-weight: 500;
     font-size: 0.9rem;
     color: #495055;
- 
+
     width: 100%;
     padding: 15px;
     border-radius: 6px;
@@ -41,7 +40,7 @@ div.input-block label {
 div.input-block input:valid + label,
 div.input-block input:focus + label {
     transform: scale(0.9) translateY(-30px);
-    background: #fff;
+    background: rgb(247, 247, 247);
 }
 
 div.input-block input:focus {
@@ -51,4 +50,10 @@ div.input-block input:focus {
 
 div.input-block input:focus + label {
     color: #284b63;
+}
+
+.error {
+    color: var(--error-color);
+    margin: 0.2rem 0 0 1rem;
+    font: bold 0.9rem Roboto, sans-serif;
 }

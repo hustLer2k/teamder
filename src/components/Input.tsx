@@ -72,6 +72,7 @@ const Input = forwardRef(function Input(
                 onBlur={blurHandler}
             />
             <label htmlFor={inputOptions.id}>{label}</label>
+            {error && <p className={styles.error}>{error}</p>}
         </div>
     );
 });
