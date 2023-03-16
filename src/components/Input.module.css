@@ -37,7 +37,7 @@ div.input-block label {
     pointer-events: none;
 }
 
-div.input-block input:valid + label,
+div.input-block input:not(:placeholder-shown) + label,
 div.input-block input:focus + label {
     transform: scale(0.9) translateY(-30px);
     background: rgb(247, 247, 247);

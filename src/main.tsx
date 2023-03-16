@@ -13,14 +13,15 @@ import {
 } from "react-router-dom";
 import SignUp from "./routes/Signin";
 import "./index.css";
-import { store } from './store/store';
+import { store } from "./store/store";
 import { Provider } from "react-redux";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path="/" element={<App />} />
-            <Route path="signin" element={<SignUp />} />
+            <Route path="/" element={<App />}>
+                <Route path="signin" element={<SignUp />} />
+            </Route>
         </>
     )
 );

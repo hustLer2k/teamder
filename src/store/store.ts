@@ -1,7 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface State {
+interface State {
     token: string | null;
 }
 
@@ -13,7 +13,7 @@ const slice = createSlice({
     name: "root",
     initialState,
     reducers: {
-        update: (state, action: PayloadAction<string>) => {
+        update: (state, action: PayloadAction<string | null>) => {
             state.token = action.payload;
         },
     },
@@ -24,7 +24,4 @@ export const store = configureStore({
 });
 
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-
-
 export const { update } = slice.actions;

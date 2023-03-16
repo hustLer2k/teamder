@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import useToken from "./hooks/useToken";
+import { Outlet } from "react-router-dom";
 
 function App() {
     const [count, setCount] = useState(0);
+    const [token] = useToken();
 
     return (
         <div className="App">
@@ -10,13 +14,10 @@ function App() {
                 <button onClick={() => setCount((count) => count + 1)}>
                     count is {count}
                 </button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
+                <p>{token}</p>
             </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
+            <Link to="/signin">Sign in</Link>
+            <Outlet />
         </div>
     );
 }

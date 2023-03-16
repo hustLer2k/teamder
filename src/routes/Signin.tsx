@@ -1,13 +1,20 @@
 import classes from "./Signin.module.css";
 import Input, { InputRef } from "../components/Input";
 import Spinner from "../components/Spinner";
+import { useNavigate } from "react-router-dom";
 
 import { useState, useEffect, useRef } from "react";
+import useToken from "../hooks/useToken";
 
 interface RequestBody {
     email: string;
     password: string;
     username?: string;
+}
+
+interface ResponseBody {
+    token?: string;
+    message?: string;
 }
 
 const emailValidator = (value: string) => {
@@ -43,7 +50,10 @@ const usernameValidator = (value: string) => {
 };
 
 export default function SignUp() {
-    const [isRegistering, setIsRegistering] = useState(true);
+    const [token, updateToken] = useToken();
+    const navigate = useNavigate();
+
+    const [isRegistering, setIsRegistering] = useState(false);
     const [error, setError] = useState("");
     const [isLoading, setLoading] = useState(false);
 
@@ -63,7 +73,7 @@ export default function SignUp() {
         if (
             !(
                 emailRef.current!.isValid &&
-                emailRef.current!.isValid &&
+                PWRef.current!.isValid &&
                 usernameValidity
             )
         ) {
@@ -91,12 +101,15 @@ export default function SignUp() {
                     body: JSON.stringify(body),
                 }
             );
-            const data = await response.json();
+            const data: ResponseBody = await response.json();
             console.log(data);
 
             if (!data.token) {
                 throw new Error(data.message);
             }
+
+            updateToken(data.token);
+            navigate("/");
         } catch (err) {
             setError(
                 err instanceof Error ? err.message : "Something went wrong."
@@ -116,8 +129,18 @@ export default function SignUp() {
                     ref={usernameRef}
                 />
             )}
-            <Input label="Email" predicate={emailValidator} ref={emailRef} />
-            <Input label="Password" predicate={PWValidator} ref={PWRef} />
+            <Input
+                label="Email"
+                predicate={emailValidator}
+                ref={emailRef}
+                inputOptions={{ type: "email" }}
+            />
+            <Input
+                label="Password"
+                predicate={PWValidator}
+                ref={PWRef}
+                inputOptions={{ type: "password" }}
+            />
 
             {error && <p className={classes.error}>{error}</p>}
 
