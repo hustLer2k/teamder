@@ -1,9 +1,9 @@
 import styles from "./Navbar.module.css";
-import logo from "../../public/avatar.svg";
+import logo from "../assets/avatar.svg";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu } from "react-icons/fi";
 import useToken from "../hooks/useToken";
 
 export default function Navbar() {
