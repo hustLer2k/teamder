@@ -1,42 +1,5 @@
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 10%;
-    background-color: #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
-    height: 50px;
-    width: 50px;
-}
-
-.left-side {
-    display: flex;
-    align-items: center;
-}
-
-.header {
-    margin: 0;
-    padding: 0 10px;
-    font-size: 2rem;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-}
-
-.nav-link {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #333333;
-    font-size: 18px;
-}
-
-.right-side {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.main {
+    height: calc(100vh - 5rem);
+    flex: 1;
+    overflow: auto;
 }
