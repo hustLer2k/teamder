@@ -1,7 +1,7 @@
 import classes from "./Signin.module.css";
 import Input, { InputRef } from "../components/Input";
 import Spinner from "../components/Spinner";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { useState, useEffect, useRef } from "react";
 import useToken from "../hooks/useToken";
@@ -50,10 +50,13 @@ const usernameValidator = (value: string) => {
 };
 
 export default function SignUp() {
+    const [searchParams] = useSearchParams();
     const [token, updateToken] = useToken();
     const navigate = useNavigate();
 
-    const [isRegistering, setIsRegistering] = useState(false);
+    const [isRegistering, setIsRegistering] = useState(
+        searchParams.get("signup")
+    );
     const [error, setError] = useState("");
     const [isLoading, setLoading] = useState(false);
 
@@ -101,6 +104,13 @@ export default function SignUp() {
                     body: JSON.stringify(body),
                 }
             );
+
+            if (!response.ok) {
+                const FOKYOU = await response.json();
+                console.error(FOKYOU);
+                throw new Error("Invalid credentials.");
+            }
+
             const data: ResponseBody = await response.json();
             console.log(data);
 

@@ -1,12 +1,14 @@
 import styles from "./Navbar.module.css";
 import logo from "../../public/avatar.svg";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { FiMenu, FiX } from "react-icons/fi";
+import useToken from "../hooks/useToken";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [token] = useToken();
 
     const clickHandler = () => setIsOpen((prevIsOpen) => !prevIsOpen);
     const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -22,7 +24,6 @@ export default function Navbar() {
                     />
 
                     <img src={logo} alt="logo" className={styles["logo"]} />
-                    <h2 className={styles["header"]}>Teamder</h2>
                 </div>
             )}
 
@@ -40,27 +41,54 @@ export default function Navbar() {
                                 <h2 className={styles["header"]}>Teamder</h2>{" "}
                             </>
                         )}
-                        <Link to="#" className={styles["nav-link"]}>
+                        <NavLink
+                            to="/projects"
+                            className={({ isActive }) =>
+                                `${styles["nav-link"]} ${
+                                    isActive ? styles.active : ""
+                                }`
+                            }
+                        >
                             Explore
-                        </Link>
-                        <Link to="#" className={styles["nav-link"]}>
+                        </NavLink>
+                        <NavLink
+                            to="/dashboard"
+                            className={({ isActive }) =>
+                                `${styles["nav-link"]}  ${
+                                    isActive ? styles.active : ""
+                                }`
+                            }
+                        >
                             Dashboard
-                        </Link>
+                        </NavLink>
                     </div>
-                    <div className={styles["right-side"]}>
-                        <Link
-                            to="#"
-                            className={`${styles["nav-link"]} ${styles["sign-in"]}`}
-                        >
-                            Sign In
-                        </Link>
-                        <Link
-                            to="#"
-                            className={`${styles["nav-link"]} ${styles["sign-up"]}`}
-                        >
-                            Sign Up
-                        </Link>
-                    </div>
+                    {!token && (
+                        <div className={styles["right-side"]}>
+                            <NavLink
+                                to="/signin"
+                                className={({ isActive }) =>
+                                    `${styles["nav-link"]}  ${
+                                        isActive ? styles.active : ""
+                                    }`
+                                }
+                            >
+                                Sign In
+                            </NavLink>
+                            <NavLink
+                                to={{
+                                    pathname: "/signin",
+                                    search: "?signup=true",
+                                }}
+                                className={({ isActive }) =>
+                                    `${styles["nav-link"]} ${
+                                        styles["sign-up"]
+                                    } ${isActive ? styles.active : ""}`
+                                }
+                            >
+                                Sign Up
+                            </NavLink>
+                        </div>
+                    )}
                 </div>
             )}
         </nav>
