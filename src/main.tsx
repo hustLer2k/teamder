@@ -9,18 +9,20 @@ import {
     RouterProvider,
     createRoutesFromElements,
     Route,
-    Routes,
 } from "react-router-dom";
 import SignUp from "./routes/Signin";
 import "./index.css";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
+import Projects from "./routes/Projects";
+import ErrorPage from "./routes/ErrorPage";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path="/" element={<App />}>
+            <Route path="/" element={<App />} errorElement={<ErrorPage />}>
                 <Route path="signin" element={<SignUp />} />
+                <Route path="projects" element={<Projects />} />
             </Route>
         </>
     )
