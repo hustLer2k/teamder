@@ -1,24 +1,38 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import useToken from "./hooks/useToken";
 import { Outlet } from "react-router-dom";
+import styles from "./App.module.css";
+import logo from "../public/avatar.svg";
 
 function App() {
-    const [count, setCount] = useState(0);
     const [token] = useToken();
 
     return (
-        <div className="App">
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>{token}</p>
-            </div>
-            <Link to="/signin">Sign in</Link>
-            <Outlet />
-        </div>
+        <>
+            <nav className={styles["navbar"]}>
+                <div className={styles["left-side"]}>
+                    <img src={logo} alt="logo" className={styles["logo"]} />
+                    <h2 className={styles["header"]}>Teamder</h2>
+                    <a href="#" className={styles["nav-link"]}>
+                        Link 1
+                    </a>
+                    <a href="#" className={styles["nav-link"]}>
+                        Link 2
+                    </a>
+                </div>
+                <div className={styles["right-side"]}>
+                    <a href="#" className={styles["nav-link"]}>
+                        Sign In
+                    </a>
+                    <a href="#" className={styles["nav-link"]}>
+                        Sign Up
+                    </a>
+                </div>
+            </nav>
+            <main>
+                <Outlet />
+            </main>
+        </>
     );
 }
 
