@@ -1,9 +1,10 @@
 import "@fontsource/open-sans";
+import "@fontsource/open-sans/600.css";
 import "@fontsource/roboto";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import Root from "./routes/Root";
 import {
     createBrowserRouter,
     RouterProvider,
@@ -20,7 +21,7 @@ import ErrorPage from "./routes/ErrorPage";
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+            <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
                 <Route path="signin" element={<SignUp />} />
                 <Route path="projects" element={<Projects />} />
             </Route>

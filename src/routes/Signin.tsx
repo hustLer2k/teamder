@@ -55,7 +55,7 @@ export default function SignUp() {
     const navigate = useNavigate();
 
     const [isRegistering, setIsRegistering] = useState(
-        searchParams.get("signup")
+        !!searchParams.get("signup")
     );
     const [error, setError] = useState("");
     const [isLoading, setLoading] = useState(false);
