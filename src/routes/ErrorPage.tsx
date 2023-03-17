@@ -14,7 +14,9 @@ export default function ErrorPage() {
             <div className={styles.container}>
                 <div className={styles.centerizator}>
                     <p className={styles.status_code}>{error.status}</p>
-                    <h1 className={styles.not_found}>{error.statusText}</h1>
+                    <h1 className={styles.not_found}>
+                        {error.statusText || "Something went wrong"}
+                    </h1>
                     <p className={styles.excuse}>{error.data}</p>
                     <div className={styles.actions}>
                         <Link to="/" className={styles["go-home"]}>
