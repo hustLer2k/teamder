@@ -14,14 +14,14 @@ export default function Navbar() {
     useEffect(() => {
         if (!token) return;
 
-        fetch("https://teamder-dev.herokuapp.com/api/mock/img", {
+        fetch("https://teamder-dev.herokuapp.com/api/users", {
             headers: {
                 Authorization: `Bearer ${token}`,
-                Accept: "image/jpeg",
+                Accept: "application/json",
             },
         })
-            .then((res) => res.blob())
-            .then((image) => setAvatarURL(URL.createObjectURL(image)))
+            .then((res) => res.json())
+            .then((profileData) => setAvatarURL(profileData.profilePictureURL))
             .catch((err) => console.error(err));
 
         return () => URL.revokeObjectURL(avatarURL);

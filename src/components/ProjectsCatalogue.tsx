@@ -31,7 +31,7 @@ export default function ProjectsCatalogue({
                         <p>{project.shortDescription}</p>
                         <div className={styles["roles-container"]}>
                             {project.openedRoles.map((role, i) => (
-                                <span key={i}>{role}</span>
+                                <span key={role}>{role}</span>
                             ))}
                         </div>
                     </div>

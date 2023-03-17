@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 
 function App() {
     const [token] = useToken();
+    console.log(token);
 
     return (
         <div className={styles["root-container"]}>

@@ -27,6 +27,7 @@
     background-color: #e1effe;
     color: #3758ab;
     padding: 0.5rem 1rem;
+    text-align: center;
     border-radius: 0.5rem;
     flex-basis: calc(100% / 3.5);
     margin-top: 1rem;
@@ -72,5 +73,9 @@
 
     .left-side h3 {
         font-size: 1.1rem;
+    }
+
+    .roles-container span {
+        font-size: 0.8rem;
     }
 }
