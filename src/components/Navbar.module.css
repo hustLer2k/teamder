@@ -91,3 +91,9 @@
 a.active {
     box-shadow: 0 2px rgba(103, 58, 183);
 }
+
+.avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}

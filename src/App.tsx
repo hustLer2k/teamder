@@ -9,6 +9,7 @@ function App() {
     return (
         <div className={styles["root-container"]}>
             <Navbar />
+            {token}
             <main className={styles.main}>
                 <Outlet />
             </main>
