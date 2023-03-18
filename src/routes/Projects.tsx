@@ -4,6 +4,7 @@ import styles from "./Projects.module.css";
 import { Link } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import ProjectsCatalogue from "../components/ProjectsCatalogue";
+import Pagination from "../components/Pagination";
 
 export interface Project {
     avatarURLs: string[];
@@ -19,10 +20,9 @@ export default function Projects() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [projects, setProjects] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
+    const page = searchParams.get("page") || 0;
 
     useEffect(() => {
-        const page = searchParams.get("page") || 1;
-
         fetch(`https://teamder-dev.herokuapp.com/api/projects?page=${page}`)
             .then((response) => {
                 if (
@@ -54,6 +54,11 @@ export default function Projects() {
             </div>
 
             <ProjectsCatalogue projects={projects} />
+            <Pagination
+                baseLink={location.pathname}
+                totalPages={totalPages}
+                currentPage={+page}
+            />
         </div>
     );
 }
