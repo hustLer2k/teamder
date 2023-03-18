@@ -11,12 +11,14 @@ import {
     createRoutesFromElements,
     Route,
 } from "react-router-dom";
-import SignUp from "./routes/Signin";
 import "./index.css";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
-import Projects from "./routes/Projects";
+
 import ErrorPage from "./routes/ErrorPage";
+import SignUp from "./routes/Signin";
+import Projects from "./routes/Projects";
+import Project, { projectLoader } from "./routes/Project";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -24,6 +26,11 @@ const router = createBrowserRouter(
             <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
                 <Route path="signin" element={<SignUp />} />
                 <Route path="projects" element={<Projects />} />
+                <Route
+                    path="projects/:projectId"
+                    element={<Project />}
+                    loader={projectLoader}
+                />
             </Route>
         </>
     )

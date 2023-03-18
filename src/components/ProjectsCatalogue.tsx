@@ -1,16 +1,8 @@
 import styles from "./ProjectsCatalogue.module.css";
 import type { Project } from "../routes/Projects";
 import Roles from "./Roles";
+import { Link } from "react-router-dom";
 
-// export interface Project {
-//     avatarURLs: string[];
-//     id: number;
-//     name: string;
-//     occupiedPlaces: number;
-//     openedRoles: string[];
-//     shortDescription: string;
-//     teamSize: number;
-// }
 
 export default function ProjectsCatalogue({
     projects,
@@ -20,7 +12,7 @@ export default function ProjectsCatalogue({
     return (
         <div className={styles.projects}>
             {projects.map((project) => (
-                <div className={styles.project} key={project.id}>
+                <Link to={project.id.toString()} className={styles.project} key={project.id}>
                     <div className={styles["left-side"]}>
                         <h3>{project.name}</h3>
                         <span>
@@ -32,7 +24,7 @@ export default function ProjectsCatalogue({
                         <p>{project.shortDescription}</p>
                         <Roles roles={project.openedRoles} />
                     </div>
-                </div>
+                </Link>
             ))}
         </div>
     );
