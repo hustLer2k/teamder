@@ -19,14 +19,13 @@ import ErrorPage from "./routes/ErrorPage";
 import SignUp from "./routes/Signin";
 import Projects from "./routes/Projects";
 import Project, { projectLoader } from "./routes/Project";
-import UserPage from "./routes/UserPage";
+import UserPage, { userLoader } from "./routes/UserPage";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
             <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
                 <Route errorElement={<ErrorPage />}>
-
                     <Route path="signin" element={<SignUp />} />
                     <Route path="projects" element={<Projects />} />
                     <Route
@@ -34,8 +33,11 @@ const router = createBrowserRouter(
                         element={<Project />}
                         loader={projectLoader}
                     />
-                    <Route path="users/:userId" element={<UserPage />} />
-                    
+                    <Route
+                        path="users/:userId"
+                        element={<UserPage />}
+                        loader={userLoader}
+                    />
                 </Route>
             </Route>
         </>

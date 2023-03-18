@@ -6,11 +6,17 @@ import { useMediaQuery } from "react-responsive";
 import { FiMenu } from "react-icons/fi";
 import useToken from "../hooks/useToken";
 
+import { useDispatch } from "react-redux";
+import { setId } from "../store/store";
+
+
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [avatarURL, setAvatarURL] = useState<string>(logo);
     const [userId, setUserId] = useState<string>("");
     const [token] = useToken();
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (!token) return;
@@ -25,6 +31,8 @@ export default function Navbar() {
             .then((profileData) => {
                 setAvatarURL(profileData.profilePictureURL);
                 setUserId(profileData.id);
+
+                dispatch(setId(profileData.id));
             })
             .catch((err) => console.error(err));
 
