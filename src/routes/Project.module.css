@@ -1,0 +1,84 @@
+.container {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    margin: 2rem auto;
+    background-color: white;
+}
+
+.container > * {
+    padding: 2rem;
+}
+
+.container > :nth-child(odd) {
+    background-color: white;
+}
+
+.container > :nth-child(even) {
+    background-color: hsl(0, 0%, 97%);
+}
+
+.container header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    padding: 2rem;
+    text-align: right;
+}
+
+.short-description {
+    font: 1.2rem Roboto, sans-serif;
+    color: black;
+    text-align: center;
+}
+
+.opened-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    align-items: center;
+    flex-direction: column;
+}
+
+.opened-roles a {
+    color: white;
+    background-color: var(--primary-color);
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    width: max-content;
+    display: flex;
+    justify-items: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.93rem;
+}
+
+.description {
+    line-height: 1.5;
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    justify-content: center;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+@media (max-width: 769px) {
+    .container header {
+        flex-direction: column;
+    }
+
+    .container header span {
+        margin-top: 0.5rem;
+        align-self: flex-end;
+        font-size: 0.9rem;
+        color: #777;
+    }
+}

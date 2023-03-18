@@ -4,6 +4,11 @@
     flex-wrap: wrap;
 }
 
+.centerize {
+    width: 100%;
+    justify-content: center;
+}
+
 .roles-container span {
     background-color: #e1effe;
     color: #3758ab;
@@ -19,6 +24,6 @@
 @media (max-width: 767px) {
     .roles-container span {
         flex-basis: calc(100%);
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 }

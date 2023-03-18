@@ -44,7 +44,10 @@ export default function Pagination({
             </Link>
             {pages}
             <Link
-                to={`${baseLink}?page=${Math.min(currentPage + 1, totalPages)}`}
+                to={`${baseLink}?page=${Math.min(
+                    currentPage + 1,
+                    totalPages - 1
+                )}`}
                 className={`${styles.chevron} ${styles.left}`}
             >
                 <FiChevronRight size={24} aria-hidden="true" />
