@@ -52,13 +52,15 @@ export default function Project() {
 
             <p className={styles["description"]}>{project.description}</p>
 
-            <div className={styles["opened-roles"]}>
-                <h3>Opened roles</h3>
-                <Roles roles={openedRolesNames} centerize={true} />
-                <Link to="apply">
-                    Apply <AiOutlineArrowRight size={20} />{" "}
-                </Link>
-            </div>
+            {openedRolesNames.length && (
+                <div className={styles["opened-roles"]}>
+                    <h3>Opened roles</h3>
+                    <Roles roles={openedRolesNames} centerize={true} />
+                    <Link to="apply">
+                        Apply <AiOutlineArrowRight size={20} />{" "}
+                    </Link>
+                </div>
+            )}
 
             <div className={styles.team}>
                 <h3>Team</h3>
