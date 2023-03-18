@@ -89,7 +89,8 @@
 }
 
 a.active {
-    box-shadow: 0 2px rgba(103, 58, 183);
+    /* box-shadow: 0 2px rgba(103, 58, 183); */
+    font-weight: bold;
 }
 
 .avatar {
