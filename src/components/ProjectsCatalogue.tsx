@@ -1,5 +1,6 @@
 import styles from "./ProjectsCatalogue.module.css";
 import type { Project } from "../routes/Projects";
+import Roles from "./Roles";
 
 // export interface Project {
 //     avatarURLs: string[];
@@ -29,11 +30,7 @@ export default function ProjectsCatalogue({
 
                     <div className={styles["right-side"]}>
                         <p>{project.shortDescription}</p>
-                        <div className={styles["roles-container"]}>
-                            {project.openedRoles.map((role, i) => (
-                                <span key={role}>{role}</span>
-                            ))}
-                        </div>
+                        <Roles roles={project.openedRoles} />
                     </div>
                 </div>
             ))}
