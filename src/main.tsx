@@ -19,6 +19,7 @@ import ErrorPage from "./routes/ErrorPage";
 import SignUp from "./routes/Signin";
 import Projects from "./routes/Projects";
 import Project, { projectLoader } from "./routes/Project";
+import UserPage from "./routes/UserPage";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -31,6 +32,8 @@ const router = createBrowserRouter(
                     element={<Project />}
                     loader={projectLoader}
                 />
+
+                <Route path="users/:userId" element={<UserPage />} />
             </Route>
         </>
     )

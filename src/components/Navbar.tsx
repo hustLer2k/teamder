@@ -9,6 +9,7 @@ import useToken from "../hooks/useToken";
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [avatarURL, setAvatarURL] = useState<string>(logo);
+    const [userId, setUserId] = useState<string>("");
     const [token] = useToken();
 
     useEffect(() => {
@@ -21,7 +22,10 @@ export default function Navbar() {
             },
         })
             .then((res) => res.json())
-            .then((profileData) => setAvatarURL(profileData.profilePictureURL))
+            .then((profileData) => {
+                setAvatarURL(profileData.profilePictureURL);
+                setUserId(profileData.id);
+            })
             .catch((err) => console.error(err));
 
         return () => URL.revokeObjectURL(avatarURL);
@@ -109,11 +113,13 @@ export default function Navbar() {
                         )}
 
                         {token && (
-                            <img
-                                className={styles.avatar}
-                                src={avatarURL}
-                                alt="Avatar"
-                            />
+                            <NavLink to={`/users/${userId}`}>
+                                <img
+                                    className={styles.avatar}
+                                    src={avatarURL}
+                                    alt="Avatar"
+                                />
+                            </NavLink>
                         )}
                     </div>
                 </div>
