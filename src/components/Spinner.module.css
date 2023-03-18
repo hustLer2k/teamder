@@ -14,6 +14,12 @@
     animation: dash4 1.5s ease-in-out infinite;
 }
 
+.big {
+    margin: 30vh auto;
+    width: 20%;
+    display: block;
+}
+
 @keyframes rotate4 {
     100% {
         transform: rotate(360deg);

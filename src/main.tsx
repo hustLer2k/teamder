@@ -25,15 +25,18 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <>
             <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
-                <Route path="signin" element={<SignUp />} />
-                <Route path="projects" element={<Projects />} />
-                <Route
-                    path="projects/:projectId"
-                    element={<Project />}
-                    loader={projectLoader}
-                />
+                <Route errorElement={<ErrorPage />}>
 
-                <Route path="users/:userId" element={<UserPage />} />
+                    <Route path="signin" element={<SignUp />} />
+                    <Route path="projects" element={<Projects />} />
+                    <Route
+                        path="projects/:projectId"
+                        element={<Project />}
+                        loader={projectLoader}
+                    />
+                    <Route path="users/:userId" element={<UserPage />} />
+                    
+                </Route>
             </Route>
         </>
     )

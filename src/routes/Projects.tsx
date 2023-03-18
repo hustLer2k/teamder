@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import ProjectsCatalogue from "../components/ProjectsCatalogue";
 import Pagination from "../components/Pagination";
+import Spinner from "../components/Spinner";
 
 export interface Project {
     avatarURLs: string[];
@@ -20,6 +21,8 @@ export default function Projects() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [projects, setProjects] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
+    const [loading, setLoading] = useState(true);
+
     const page = searchParams.get("page") || 0;
 
     useEffect(() => {
@@ -37,13 +40,16 @@ export default function Projects() {
                 setProjects(projects.content);
                 setTotalPages(projects.totalPages);
             })
-            .catch((error) => console.error(error));
+            .catch((error) => console.error(error))
+            .finally(() => setLoading(false));
     }, [searchParams]);
 
     console.log(projects);
     console.log(totalPages);
 
-    return (
+    return loading ? (
+        <Spinner big={true} />
+    ) : (
         <div className={styles.container}>
             <div className={styles.helper}>
                 <h2>Create a new project or join an existing one</h2>
