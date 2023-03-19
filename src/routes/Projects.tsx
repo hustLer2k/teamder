@@ -17,7 +17,7 @@ export interface Project {
 }
 
 export default function Projects() {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const [projects, setProjects] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -41,7 +41,7 @@ export default function Projects() {
             })
             .catch((error) => console.error(error))
             .finally(() => setLoading(false));
-    }, [searchParams]);
+    }, [searchParams, page]);
 
     return loading ? (
         <Spinner big={true} />
@@ -52,14 +52,15 @@ export default function Projects() {
                 <p>Here are the latest enterprise level projects</p>
                 <ArrowedLink
                     to="create"
-                    text="Create a new project"
+                    text="Create a project"
                     size={24}
+                    className={styles["create-project"]}
                 />
             </div>
 
             <ProjectsCatalogue projects={projects} />
             <Pagination
-                baseLink={location.pathname}
+                baseLink={window.location.pathname}
                 totalPages={totalPages}
                 currentPage={+page}
             />

@@ -19,3 +19,13 @@
     font-size: 1.5rem;
     margin-bottom: 0.69rem;
 }
+
+.create-project {
+    max-width: 100%;
+}
+
+@media (max-width: 769px) {
+    .create-project {
+        padding: 0.5rem;
+    }
+}

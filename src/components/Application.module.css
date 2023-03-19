@@ -1,0 +1,25 @@
+.container {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: hsl(0, 0%, 99.3%);
+    padding: 1rem;
+    border-radius: 0.69rem;
+
+    color: hsl(0, 0%, 10%);
+    font: 1.15rem/1.5 "Roboto", sans-serif;
+    width: 77%;
+
+    word-break: break-word;
+
+    background-color: hsl(0, 0%, 40%);
+    color: white;
+}
+
+.container h4 {
+    font: 500 1.2rem "Roboto", sans-serif;
+    margin-bottom: 0.28rem;
+    color: hsl(0, 3%, 80%);
+}
+
+.container > div:not(:first-child) > h4 {
+    margin-top: 0.77rem;
+}

@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs, useLoaderData, Link } from "react-router-dom";
+import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import styles from "./Project.module.css";
 import { useState } from "react";
 import UserCard from "../components/UserCard";
@@ -8,7 +8,7 @@ import ProjectApplication from "../components/ProjectApplication";
 import useToken from "../hooks/useToken";
 
 export interface ProjectLoaderData {
-    id: number;
+    id: string;
     name: string;
     shortDescription: string;
     description: string;
@@ -38,7 +38,6 @@ export default function Project() {
     const [showApplyForm, setShowApplyForm] = useState(false);
     const toggleApplyForm = () => setShowApplyForm((prevState) => !prevState);
     const Arrow = showApplyForm ? AiOutlineArrowUp : AiOutlineArrowDown;
-
     return (
         <div className={styles.container}>
             <header>
@@ -72,6 +71,7 @@ export default function Project() {
                     {showApplyForm && (
                         <ProjectApplication
                             openedRolesNames={openedRolesNames}
+                            projectId={project.id}
                         />
                     )}
                 </div>

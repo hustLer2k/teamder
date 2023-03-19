@@ -1,5 +1,4 @@
 import styles from "./UserCard.module.css";
-import avatar from "../assets/avatar.svg";
 import { Link } from "react-router-dom";
 
 export default function UserCard({
@@ -20,14 +19,14 @@ export default function UserCard({
                     profilePictureUrl ||
                     "https://teamder-dev.herokuapp.com/api/mock/img"
                 }
-                alt="Profile picture"
+                alt="Profile"
             />
             {username && <p>{username}</p>}
             {role && <h4>{role}</h4>}
         </>
     );
 
-    if (location.pathname.startsWith("/users")) {
+    if (window.location.pathname.startsWith("/users")) {
         return <div className={styles.card}>{children}</div>;
     } else {
         return (

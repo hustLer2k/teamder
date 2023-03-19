@@ -58,6 +58,7 @@
 .apply-toggler {
     color: white;
     background-color: var(--primary-color);
+    border-width: 0;
     padding: 0.5rem 2rem;
     border-radius: 5px;
     text-decoration: none;
@@ -69,6 +70,8 @@
     margin-top: 1rem;
     font-size: 0.93rem;
     cursor: pointer;
+    outline-color: transparent;
+    font: 1.05rem Roboto, sans-serif;
 }
 
 @media (max-width: 769px) {

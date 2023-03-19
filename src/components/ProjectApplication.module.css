@@ -13,22 +13,40 @@
     margin-bottom: 5px;
 }
 
+.error {
+    font: 500 1.05rem Roboto, sans-serif;
+    margin-bottom: 0.5rem;
+}
+
 .form textarea,
 .form select {
+    background-color: white;
+    color: var(--text-color);
+
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
     margin-bottom: 1rem;
     font: 1.05rem Roboto, sans-serif;
+
+    outline-color: transparent;
+    border-radius: 0.5rem;
+
+    resize: none;
+}
+
+.form textarea:focus,
+.form select:focus {
+    outline: none;
 }
 
 .form button {
     background-color: var(--primary-color);
     color: #fff;
-    padding: 10px 20px;
+    padding: 0.5rem 2rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1.08rem;
+    font: 1.05rem Roboto, sans-serif;
     margin: 1rem auto;
 }

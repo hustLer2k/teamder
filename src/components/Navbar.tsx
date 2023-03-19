@@ -37,7 +37,7 @@ export default function Navbar() {
             .catch((err) => console.error(err));
 
         return () => URL.revokeObjectURL(avatarURL);
-    }, [token]);
+    }, [token, avatarURL, dispatch]);
 
     const clickHandler = () => setIsOpen((prevIsOpen) => !prevIsOpen);
     const isMobile = useMediaQuery({ maxWidth: 768 });

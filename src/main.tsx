@@ -1,6 +1,7 @@
 import "@fontsource/open-sans";
 import "@fontsource/open-sans/600.css";
 import "@fontsource/roboto";
+import "@fontsource/roboto/500.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";

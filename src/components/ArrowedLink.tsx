@@ -6,13 +6,15 @@ export default function ArrowedLink({
     to,
     text,
     size = 24,
+    className,
 }: {
     to: string;
     text: string;
     size?: number;
+    className?: string;
 }) {
     return (
-        <Link to={to} className={styles["arrowed-link"]}>
+        <Link to={to} className={`${styles["arrowed-link"]} ${className}`}>
             {text} <AiOutlineArrowRight size={size} />
         </Link>
     );

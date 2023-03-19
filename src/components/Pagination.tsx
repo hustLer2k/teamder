@@ -48,7 +48,7 @@ export default function Pagination({
                     currentPage + 1,
                     totalPages - 1
                 )}`}
-                className={`${styles.chevron} ${styles.left}`}
+                className={`${styles.chevron} ${styles.right}`}
             >
                 <FiChevronRight size={24} aria-hidden="true" />
             </Link>

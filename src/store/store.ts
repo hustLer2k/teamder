@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import type { ApplicationType } from "../components/Application";
 
 interface Root {
     token: string | null;
@@ -24,20 +25,17 @@ const rootSlice = createSlice({
     },
 });
 
-type ApplicationsState = { projectId: number; role: string }[];
+type ApplicationsState = ApplicationType[];
 
 const applicationsSlice = createSlice({
     name: "applications",
     initialState: [] as ApplicationsState,
     reducers: {
-        add: (
-            state,
-            action: PayloadAction<{ projectId: number; role: string }>
-        ) => {
+        add: (state, action: PayloadAction<ApplicationType>) => {
             state.push(action.payload);
         },
         remove: (state, action: PayloadAction<number>) => {
-            state.filter((app) => app.projectId !== action.payload);
+            state.filter((app) => app.id !== action.payload);
         },
     },
 });
