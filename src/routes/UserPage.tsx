@@ -36,7 +36,7 @@ export default function UserPage() {
                 <div className={styles["user-profile"]}>
                     <img
                         className={styles["avatar"]}
-                        src={avatar || userData.avatarUrl}
+                        src={userData.avatarUrl || avatar}
                         alt="User Avatar"
                     />
                     <h3 className={styles["username"]}>{userData.username}</h3>
