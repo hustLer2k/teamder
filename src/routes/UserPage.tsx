@@ -1,18 +1,82 @@
 import styles from "./UserPage.module.css";
-import UserCard from "../components/UserCard";
 import avatar from "../assets/avatar.svg";
-import { LoaderFunctionArgs, redirect, useLoaderData } from "react-router-dom";
-
+import {
+    LoaderFunctionArgs,
+    redirect,
+    useLoaderData,
+    Link,
+} from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store/store";
 
+interface UserData {
+    id: number;
+    username: string;
+    bio: string | null;
+    avatarUrl: string | null;
+    resumeUrl: string | null;
+    participations: {
+        projectId: number;
+        projectTitle: string;
+        shortDescription: string;
+        isOwner: boolean;
+        role: string;
+    }[];
+}
+
 export default function UserPage() {
-    const userData = useLoaderData();
+    const userData = useLoaderData() as UserData;
     const curUserId = useSelector((state: RootState) => state.userId);
 
     console.log(userData);
 
-    return <section>{curUserId}</section>;
+    return (
+        <div className={styles["container"]}>
+            <div className={styles["left"]}>
+                <div className={styles["user-profile"]}>
+                    <img
+                        className={styles["avatar"]}
+                        src={avatar || userData.avatarUrl}
+                        alt="User Avatar"
+                    />
+                    <h3 className={styles["username"]}>{userData.username}</h3>
+                    {true && (
+                        <p className={styles["bio"]}>
+                            Computer Science Student at the Wrocław University
+                            of Science and Technology.
+                        </p>
+                    )}
+                </div>
+            </div>
+
+            <div className={styles["right"]}>
+                <div className={styles["user-projects"]}>
+                    <h2 className={styles["section-heading"]}>Projects</h2>
+                    <ul className={styles["project-list"]}>
+                        {userData.participations.map((project) => (
+                            <li
+                                className={styles["project-item"]}
+                                key={project.projectId}
+                            >
+                                <Link to={`/projects/${project.projectId}`}>
+                                    <h3 className={styles["project-title"]}>
+                                        {project.projectTitle}
+                                    </h3>
+                                    <p
+                                        className={
+                                            styles["project-description"]
+                                        }
+                                    >
+                                        {project.shortDescription}
+                                    </p>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export async function userLoader(args: LoaderFunctionArgs) {
@@ -22,6 +86,6 @@ export async function userLoader(args: LoaderFunctionArgs) {
     if (!userId) return redirect("/");
 
     return fetch(
-        `https://teamder-dev.herokuapp.com/users/${userId}/dashboard/projects`
+        `https://teamder-dev.herokuapp.com/api/users/profile/${userId}`
     );
 }

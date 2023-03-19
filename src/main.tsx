@@ -20,6 +20,9 @@ import SignUp from "./routes/Signin";
 import Projects from "./routes/Projects";
 import Project, { projectLoader } from "./routes/Project";
 import UserPage, { userLoader } from "./routes/UserPage";
+import ProjectApplication, {
+    applicationAction,
+} from "./routes/ProjectApplication";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -32,6 +35,12 @@ const router = createBrowserRouter(
                         path="projects/:projectId"
                         element={<Project />}
                         loader={projectLoader}
+                    />
+                    <Route
+                        path="projects/:projectId/apply"
+                        element={<ProjectApplication />}
+                        loader={projectLoader}
+                        action={applicationAction}
                     />
                     <Route
                         path="users/:userId"

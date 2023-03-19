@@ -6,7 +6,7 @@ import UserCard from "../components/UserCard";
 
 import Roles from "../components/Roles";
 
-interface ProjectLoaderData {
+export interface ProjectLoaderData {
     id: number;
     name: string;
     shortDescription: string;

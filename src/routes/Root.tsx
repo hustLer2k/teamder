@@ -7,7 +7,6 @@ import Spinner from "../components/Spinner";
 function App() {
     const [token] = useToken();
     const navigation = useNavigation();
-    console.log(token);
 
     return (
         <div className={styles["root-container"]}>

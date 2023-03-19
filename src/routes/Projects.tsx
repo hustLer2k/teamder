@@ -44,9 +44,6 @@ export default function Projects() {
             .finally(() => setLoading(false));
     }, [searchParams]);
 
-    console.log(projects);
-    console.log(totalPages);
-
     return loading ? (
         <Spinner big={true} />
     ) : (

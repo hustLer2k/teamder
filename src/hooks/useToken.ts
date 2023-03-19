@@ -22,7 +22,6 @@ export default function useToken() {
 
                 const lambda = expirationDate.getTime() - Date.now();
                 if (lambda < 60) throw new Error("Token expired.");
-                console.log(lambda);
 
                 setTimeout(() => dispatch(update(null)), lambda);
             } catch (err) {

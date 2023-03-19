@@ -9,7 +9,6 @@ import useToken from "../hooks/useToken";
 import { useDispatch } from "react-redux";
 import { setId } from "../store/store";
 
-
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [avatarURL, setAvatarURL] = useState<string>(logo);
@@ -21,7 +20,8 @@ export default function Navbar() {
     useEffect(() => {
         if (!token) return;
 
-        fetch("https://teamder-dev.herokuapp.com/api/users", {
+        fetch("https://teamder-dev.herokuapp.com/api/users/profile/81", {
+            method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,
                 Accept: "application/json",
@@ -29,7 +29,7 @@ export default function Navbar() {
         })
             .then((res) => res.json())
             .then((profileData) => {
-                setAvatarURL(profileData.profilePictureURL);
+                setAvatarURL(profileData.avatarUrl);
                 setUserId(profileData.id);
 
                 dispatch(setId(profileData.id));
