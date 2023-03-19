@@ -18,16 +18,14 @@ jobs:
           node-version: 14.x
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build the app
         run: npm run build
 
-      - name: Login to Heroku
-        uses: actions/heroku@v2.0.0
-        with:
-          email: ${{ secrets.HEROKU_EMAIL }}
-          api_key: ${{ secrets.HEROKU_API_KEY }}
-
       - name: Deploy to Heroku
-        run: git push heroku HEAD:main
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: 'teamder-front'
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
