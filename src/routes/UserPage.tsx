@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store/store";
+import ArrowedLink from "../components/ArrowedLink";
+import { AiOutlineStar } from "react-icons/ai";
 
 interface UserData {
     id: number;
@@ -36,8 +38,17 @@ export default function UserPage() {
         placeholder = (
             <div className={styles.placeholder}>
                 <h2>You don't have any projects yet</h2>
-                <Link to="/projects/create">Create </Link>
+                <ArrowedLink
+                    to="/project/create"
+                    text="Create your first project"
+                />
             </div>
+        );
+    } else {
+        placeholder = (
+            <h2 className={styles.placeholder}>
+                {userData.username} doesn't have any projects yet
+            </h2>
         );
     }
 
@@ -81,13 +92,20 @@ export default function UserPage() {
                                         >
                                             {project.shortDescription}
                                         </p>
+
+                                        {project.isOwner && (
+                                            <span className={styles.star}>
+                                                {" "}
+                                                <AiOutlineStar size={24} />{" "}
+                                            </span>
+                                        )}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
                 ) : (
-                    <h2>{userData.username} doesn't have any projects yet</h2>
+                    placeholder
                 )}
             </div>
         </div>
