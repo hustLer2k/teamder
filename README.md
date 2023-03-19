@@ -1,6 +1,8 @@
 # teamder
 A React frontend for Teamder (https://github.com/artsiomshshshsk/teamder).
 
+https://teamder.vercel.app/
+
 Installing locally
 ```
 git clone https://github.com/hustLer2k/teamder.git
