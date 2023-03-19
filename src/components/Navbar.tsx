@@ -20,7 +20,7 @@ export default function Navbar() {
     useEffect(() => {
         if (!token) return;
 
-        fetch("https://teamder-dev.herokuapp.com/api/users/profile/81", {
+        fetch("https://teamder-dev.herokuapp.com/api/users/profile", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,
