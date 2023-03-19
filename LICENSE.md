@@ -1,4 +1,6 @@
-The MIT License (Andrew Tate Fan Version)
+The MIT License
+
+Copyright 2023, Great Software
 
 Permission is hereby granted, free of charge, to any person who is a fan of Andrew Tate to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, subject to the following conditions:
 
