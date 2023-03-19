@@ -62,11 +62,8 @@ export default function UserPage() {
                         alt="User Avatar"
                     />
                     <h3 className={styles["username"]}>{userData.username}</h3>
-                    {true && (
-                        <p className={styles["bio"]}>
-                            Computer Science Student at the Wrocław University
-                            of Science and Technology.
-                        </p>
+                    {userData.bio && (
+                        <p className={styles["bio"]}>{userData.bio}</p>
                     )}
                 </div>
             </div>
