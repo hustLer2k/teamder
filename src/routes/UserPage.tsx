@@ -30,6 +30,17 @@ export default function UserPage() {
 
     console.log(userData);
 
+    let placeholder: JSX.Element;
+
+    if (curUserId && userData.id === +curUserId) {
+        placeholder = (
+            <div className={styles.placeholder}>
+                <h2>You don't have any projects yet</h2>
+                <Link to="/projects/create">Create </Link>
+            </div>
+        );
+    }
+
     return (
         <div className={styles["container"]}>
             <div className={styles["left"]}>
@@ -50,30 +61,34 @@ export default function UserPage() {
             </div>
 
             <div className={styles["right"]}>
-                <div className={styles["user-projects"]}>
-                    <h2 className={styles["section-heading"]}>Projects</h2>
-                    <ul className={styles["project-list"]}>
-                        {userData.participations.map((project) => (
-                            <li
-                                className={styles["project-item"]}
-                                key={project.projectId}
-                            >
-                                <Link to={`/projects/${project.projectId}`}>
-                                    <h3 className={styles["project-title"]}>
-                                        {project.projectTitle}
-                                    </h3>
-                                    <p
-                                        className={
-                                            styles["project-description"]
-                                        }
-                                    >
-                                        {project.shortDescription}
-                                    </p>
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                {userData.participations.length ? (
+                    <div className={styles["user-projects"]}>
+                        <h2 className={styles["section-heading"]}>Projects</h2>
+                        <ul className={styles["project-list"]}>
+                            {userData.participations.map((project) => (
+                                <li
+                                    className={styles["project-item"]}
+                                    key={project.projectId}
+                                >
+                                    <Link to={`/projects/${project.projectId}`}>
+                                        <h3 className={styles["project-title"]}>
+                                            {project.projectTitle}
+                                        </h3>
+                                        <p
+                                            className={
+                                                styles["project-description"]
+                                            }
+                                        >
+                                            {project.shortDescription}
+                                        </p>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ) : (
+                    <h2>{userData.username} doesn't have any projects yet</h2>
+                )}
             </div>
         </div>
     );

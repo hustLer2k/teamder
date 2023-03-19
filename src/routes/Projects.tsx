@@ -1,11 +1,10 @@
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styles from "./Projects.module.css";
-import { Link } from "react-router-dom";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import ProjectsCatalogue from "../components/ProjectsCatalogue";
 import Pagination from "../components/Pagination";
 import Spinner from "../components/Spinner";
+import ArrowedLink from "../components/ArrowedLink";
 
 export interface Project {
     avatarURLs: string[];
@@ -51,9 +50,11 @@ export default function Projects() {
             <div className={styles.helper}>
                 <h2>Create a new project or join an existing one</h2>
                 <p>Here are the latest enterprise level projects</p>
-                <Link to="create">
-                    Create a new project <AiOutlineArrowRight size={24} />
-                </Link>
+                <ArrowedLink
+                    to="create"
+                    text="Create a new project"
+                    size={24}
+                />
             </div>
 
             <ProjectsCatalogue projects={projects} />

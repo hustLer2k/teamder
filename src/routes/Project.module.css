@@ -42,21 +42,6 @@
     flex-direction: column;
 }
 
-.opened-roles a {
-    color: white;
-    background-color: var(--primary-color);
-    padding: 0.5rem 2rem;
-    border-radius: 5px;
-    text-decoration: none;
-    width: max-content;
-    display: flex;
-    justify-items: space-between;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    font-size: 0.93rem;
-}
-
 .description {
     line-height: 1.5;
 }
