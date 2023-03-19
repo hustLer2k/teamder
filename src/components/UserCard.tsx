@@ -13,11 +13,15 @@ export default function UserCard({
     username?: string;
     role?: string;
 }) {
-    let Tag: JSX.Element | null = null;
-
     const children = (
         <>
-            <img src={profilePictureUrl || avatar} alt="Profile picture" />
+            <img
+                src={
+                    profilePictureUrl ||
+                    "https://teamder-dev.herokuapp.com/api/mock/img"
+                }
+                alt="Profile picture"
+            />
             {username && <p>{username}</p>}
             {role && <h4>{role}</h4>}
         </>

@@ -1,11 +1,10 @@
 import { LoaderFunctionArgs, useLoaderData, Link } from "react-router-dom";
 import styles from "./Project.module.css";
-import avatar from "../assets/avatar.svg";
-import { AiOutlineArrowRight } from "react-icons/ai";
+import { useState } from "react";
 import UserCard from "../components/UserCard";
+import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 
 import Roles from "../components/Roles";
-import ArrowedLink from "../components/ArrowedLink";
 
 export interface ProjectLoaderData {
     id: number;
@@ -34,7 +33,9 @@ export default function Project() {
     )?.username;
     const openedRolesNames = project.openedRoles.map((role) => role.name);
 
-    console.log(project);
+    const [showApplyForm, setShowApplyForm] = useState(false);
+    const toggleApplyForm = () => setShowApplyForm((prevState) => !prevState);
+    const Arrow = showApplyForm ? AiOutlineArrowUp : AiOutlineArrowDown;
 
     return (
         <div className={styles.container}>
@@ -57,7 +58,12 @@ export default function Project() {
                 <div className={styles["opened-roles"]}>
                     <h3>Opened roles</h3>
                     <Roles roles={openedRolesNames} centerize={true} />
-                    <ArrowedLink to="apply" text="Apply" />
+                    <button
+                        className={styles["apply-toggler"]}
+                        onClick={toggleApplyForm}
+                    >
+                        Apply <Arrow size={24} />
+                    </button>
                 </div>
             )}
 
