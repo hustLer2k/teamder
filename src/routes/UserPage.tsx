@@ -28,7 +28,7 @@ interface UserData {
 
 export default function UserPage() {
     const userData = useLoaderData() as UserData;
-    const curUserId = useSelector((state: RootState) => state.userId);
+    const curUserId = useSelector((state: RootState) => state.root.userId);
 
     console.log(userData);
 

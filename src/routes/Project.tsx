@@ -3,8 +3,9 @@ import styles from "./Project.module.css";
 import { useState } from "react";
 import UserCard from "../components/UserCard";
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
-
 import Roles from "../components/Roles";
+import ProjectApplication from "../components/ProjectApplication";
+import useToken from "../hooks/useToken";
 
 export interface ProjectLoaderData {
     id: number;
@@ -25,6 +26,7 @@ export interface ProjectLoaderData {
 }
 
 export default function Project() {
+    const [token] = useToken();
     const project = useLoaderData() as ProjectLoaderData;
 
     const publishedAt = new Date(project.publishedAt);
@@ -58,12 +60,20 @@ export default function Project() {
                 <div className={styles["opened-roles"]}>
                     <h3>Opened roles</h3>
                     <Roles roles={openedRolesNames} centerize={true} />
-                    <button
-                        className={styles["apply-toggler"]}
-                        onClick={toggleApplyForm}
-                    >
-                        Apply <Arrow size={24} />
-                    </button>
+                    {token && (
+                        <button
+                            className={styles["apply-toggler"]}
+                            onClick={toggleApplyForm}
+                        >
+                            Apply <Arrow size={24} />
+                        </button>
+                    )}
+
+                    {showApplyForm && (
+                        <ProjectApplication
+                            openedRolesNames={openedRolesNames}
+                        />
+                    )}
                 </div>
             )}
 

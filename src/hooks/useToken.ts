@@ -7,7 +7,7 @@ const TOKEN_DURATION = 1e9;
 
 export default function useToken() {
     const dispatch = useDispatch();
-    const token = useSelector((state: RootState) => state.token);
+    const token = useSelector((state: RootState) => state.root.token);
 
     useEffect(() => {
         if (
