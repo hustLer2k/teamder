@@ -94,8 +94,10 @@ export default function UserPage() {
                                         </p>
 
                                         {project.isOwner && (
-                                            <span className={styles.star}>
-                                                {" "}
+                                            <span
+                                                className={styles.star}
+                                                title="Owns the project"
+                                            >
                                                 <AiOutlineStar size={24} />{" "}
                                             </span>
                                         )}
