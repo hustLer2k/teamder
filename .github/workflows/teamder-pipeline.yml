@@ -24,7 +24,7 @@ jobs:
         run: npm run build
 
       - name: Login to Heroku
-        uses: actions/heroku@v1.0.1
+        uses: actions/heroku@v2.0.0
         with:
           email: ${{ secrets.HEROKU_EMAIL }}
           api_key: ${{ secrets.HEROKU_API_KEY }}
