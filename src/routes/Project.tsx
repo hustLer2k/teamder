@@ -26,8 +26,13 @@ export interface ProjectLoaderData {
 }
 
 export default function Project() {
-    const [token] = useToken();
+    const [token, , userId] = useToken();
     const project = useLoaderData() as ProjectLoaderData;
+
+    const ownsProject = userId === project.ownerId;
+    const isTeamMember = project.teamMembers.some(
+        (member) => member.userId === userId
+    );
 
     const publishedAt = new Date(project.publishedAt);
     const ownerUsername = project.teamMembers.find(
@@ -59,7 +64,8 @@ export default function Project() {
                 <div className={styles["opened-roles"]}>
                     <h3>Opened roles</h3>
                     <Roles roles={openedRolesNames} centerize={true} />
-                    {token && (
+
+                    {!ownsProject && !isTeamMember && token && (
                         <button
                             className={styles["apply-toggler"]}
                             onClick={toggleApplyForm}

@@ -33,7 +33,12 @@ const DropFile = ({ onFileChange }: { onFileChange: (file: File) => void }) => {
                     <AiOutlineCloudUpload size={128} />
                     <p>Drop your pdf file here</p>
                 </div>
-                <input type="file" value="" onChange={onFileDrop} />
+                <input
+                    type="file"
+                    value=""
+                    onChange={onFileDrop}
+                    accept="application/pdf"
+                />
             </div>
             {file && (
                 <div className="drop-file-preview">

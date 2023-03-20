@@ -66,7 +66,6 @@ export default function ProjectApplication({
         formData.append("cv", CV);
 
         setStatus(<Spinner />);
-        let response: Response;
         fetch(
             `https://teamder-dev.herokuapp.com/api/projects/${projectId}/applications`,
             {
@@ -78,36 +77,36 @@ export default function ProjectApplication({
             }
         )
             .then((res) => {
-                response = res;
-                return res.json();
-            })
-            .then((responseJSON) => {
                 if (
-                    response.ok &&
-                    response.headers.get("Content-Type") === "application/json"
+                    res.ok &&
+                    res.headers.get("Content-Type") === "application/json"
                 ) {
-                    let application = {
-                        message: responseJSON.message,
-                        role: responseJSON.roleRequest,
-                        CVUrl: responseJSON.resumeURL,
-                        date: responseJSON.applicationDate,
-                    };
-
-                    console.log(responseJSON);
-                    dispatch(add({ ...application, id: +projectId }));
-
-                    setStatus(
-                        <>
-                            <h3>Your application</h3>
-                            <Application {...application} />
-                        </>
-                    );
+                    return res.json();
                 } else {
-                    setError(responseJSON.message);
+                    throw new Error(res.statusText);
                 }
             })
+            .then((responseJSON) => {
+                let application = {
+                    message: responseJSON.message,
+                    role: responseJSON.roleRequest,
+                    CVUrl: responseJSON.resumeURL,
+                    date: responseJSON.applicationDate,
+                };
+
+                console.log(responseJSON);
+                dispatch(add({ ...application, id: +projectId }));
+
+                setStatus(
+                    <>
+                        <h3>Your application</h3>
+                        <Application {...application} />
+                    </>
+                );
+            })
             .catch((err) => {
-                console.error(err);
+                setStatus(null);
+                setError(err.message || "Something went wrong");
             });
     }
 
@@ -139,11 +138,11 @@ export default function ProjectApplication({
 
                 <button type="submit">Submit</button>
             </form>
-            {error && <Error message={error} />}
+            {error && <ErrorXD message={error} />}
         </>
     );
 }
 
-function Error({ message }: { message: string }) {
+function ErrorXD({ message }: { message: string }) {
     return <p className={styles.error}>{message}</p>;
 }

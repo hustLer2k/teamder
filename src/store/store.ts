@@ -4,7 +4,7 @@ import type { ApplicationType } from "../components/Application";
 
 interface Root {
     token: string | null;
-    userId: string | null;
+    userId: number | null;
 }
 
 const initialRootState: Root = {
@@ -19,7 +19,7 @@ const rootSlice = createSlice({
         update: (state, action: PayloadAction<string | null>) => {
             state.token = action.payload;
         },
-        setId: (state, action: PayloadAction<string | null>) => {
+        setId: (state, action: PayloadAction<number | null>) => {
             state.userId = action.payload;
         },
     },

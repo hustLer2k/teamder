@@ -8,6 +8,7 @@ const TOKEN_DURATION = 1e9;
 export default function useToken() {
     const dispatch = useDispatch();
     const token = useSelector((state: RootState) => state.root.token);
+    const userId = useSelector((state: RootState) => state.root.userId);
 
     useEffect(() => {
         if (
@@ -41,5 +42,5 @@ export default function useToken() {
         setTimeout(() => dispatch(update(null)), TOKEN_DURATION);
     }
 
-    return [token, updateToken] as const;
+    return [token, updateToken, userId] as const;
 }

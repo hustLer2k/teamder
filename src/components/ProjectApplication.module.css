@@ -16,6 +16,7 @@
 .error {
     font: 500 1.05rem Roboto, sans-serif;
     margin-bottom: 0.5rem;
+    color: var(--error-color);
 }
 
 .form textarea,
