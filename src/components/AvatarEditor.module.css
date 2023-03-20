@@ -17,3 +17,10 @@
     border: none;
     outline: none;
 }
+
+@media (max-width: 769px) {
+    .photo_edit {
+        top: 14rem;
+        left: 1.69rem;
+    }
+}
