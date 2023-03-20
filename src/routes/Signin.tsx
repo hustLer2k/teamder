@@ -3,7 +3,7 @@ import Input, { InputRef } from "../components/Input";
 import Spinner from "../components/Spinner";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import useToken from "../hooks/useToken";
 
 interface RequestBody {

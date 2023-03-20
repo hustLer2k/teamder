@@ -1,11 +1,14 @@
 import styles from "./Roles.module.css";
+import { TiDelete } from "react-icons/ti";
 
 export default function Roles({
     roles,
     centerize = false,
+    onRoleDelete,
 }: {
     roles: string[];
     centerize?: boolean;
+    onRoleDelete?: (roleIndex: number) => void;
 }) {
     return (
         <div
@@ -13,8 +16,11 @@ export default function Roles({
                 centerize ? styles.centerize : ""
             }`}
         >
-            {roles.map((role) => (
-                <span key={role}>{role}</span>
+            {roles.map((role, i) => (
+                <span key={i} onClick={() => onRoleDelete?.(i)}>
+                    {role}
+                    {onRoleDelete && <TiDelete size={16} />}
+                </span>
             ))}
         </div>
     );

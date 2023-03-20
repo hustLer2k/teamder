@@ -38,6 +38,7 @@
 .form textarea:focus,
 .form select:focus {
     outline: none;
+    border-color: hsl(0, 0%, 69%);
 }
 
 .form button {

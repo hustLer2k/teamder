@@ -1,0 +1,19 @@
+.photo_edit {
+    position: relative;
+    top: 17rem;
+    left: 2.69rem;
+
+    background-color: rgb(30 41 59);
+    opacity: 75%;
+    color: white;
+    padding: 0.2rem 0.3rem;
+
+    display: flex;
+    align-items: center;
+    justify-items: between;
+    gap: 0.33rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}

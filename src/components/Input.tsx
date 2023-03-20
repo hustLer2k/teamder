@@ -69,6 +69,7 @@ const Input = forwardRef(function Input(
             <input
                 {...inputOptions}
                 onChange={changeHandler}
+                placeholder=" "
                 onBlur={blurHandler}
             />
             <label htmlFor={inputOptions.id}>{label}</label>

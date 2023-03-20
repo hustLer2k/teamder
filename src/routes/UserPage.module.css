@@ -100,11 +100,33 @@
     row-gap: 1rem;
 }
 
+.edit {
+    color: #3e4247;
+    background-color: #f6f8fa;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font: 500 1.2rem "Roboto", sans-serif;
+    padding: 0.5rem 5rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.edit:hover {
+    background-color: hsl(210, 29%, 93%);
+}
+
+.error {
+    align-self: center;
+    margin-bottom: 0.69rem;
+    color: rgb(225 29 72);
+    font: 500 1.05rem "Roboto", sans-serif;
+}
+
 @media (max-width: 769px) {
     .container {
         flex-direction: column;
         align-items: center;
-        padding: 0 2rem;
+        padding: 0 1rem;
         padding-top: 3.33rem;
     }
 

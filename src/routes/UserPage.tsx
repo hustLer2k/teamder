@@ -10,11 +10,16 @@ import { useSelector } from "react-redux";
 import type { RootState } from "../store/store";
 import ArrowedLink from "../components/ArrowedLink";
 import { AiOutlineStar } from "react-icons/ai";
+import useToken from "../hooks/useToken";
+import { useState, useRef } from "react";
+import UserEditForm from "../components/UserEditForm";
+import AvatarEditor from "../components/AvatarEditor";
+import Spinner from "../components/Spinner";
 
 interface UserData {
     id: number;
     username: string;
-    bio: string | null;
+    bio: string | undefined;
     avatarUrl: string | null;
     resumeUrl: string | null;
     participations: {
@@ -27,14 +32,24 @@ interface UserData {
 }
 
 export default function UserPage() {
-    const userData = useLoaderData() as UserData;
-    const curUserId = useSelector((state: RootState) => state.root.userId);
+    const [token] = useToken();
+    const [editing, setEditing] = useState(false);
+    const [avatarFile, setAvatarFile] = useState<File | null>(null);
+    const bioRef = useRef<HTMLParagraphElement>(null);
 
-    console.log(userData);
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const toggleEditing = () => setEditing((prevEditing) => !prevEditing);
+
+    const userData = useLoaderData() as UserData;
+    const [avatarURL, setAvatarURL] = useState(userData.avatarUrl || avatar);
+    const curUserId = useSelector((state: RootState) => state.root.userId);
 
     let placeholder: JSX.Element;
 
-    if (curUserId && userData.id === +curUserId) {
+    const ownPage = curUserId && userData.id === +curUserId;
+    if (ownPage) {
         placeholder = (
             <div className={styles.placeholder}>
                 <h2>You don't have any projects yet</h2>
@@ -52,20 +67,87 @@ export default function UserPage() {
         );
     }
 
+    const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+        if (avatarFile) formData.append("profilePicture", avatarFile);
+
+        setLoading(true);
+        setError("");
+        fetch(
+            `https://teamder-dev.herokuapp.com/api/users/profile/${userData.id}`,
+            {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+                body: formData,
+            }
+        )
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+
+                if (data.message) {
+                    setError(data.message);
+                } else {
+                    setAvatarURL(data.avatarUrl);
+                    toggleEditing();
+                    bioRef!.current!.textContent = data.bio;
+                }
+            })
+            .catch((err) => setError(err.message))
+            .finally(() => setLoading(false));
+    };
+    const cancelHandler = () => toggleEditing();
+
+    const avatarChangeHandler = (avatar: File) => setAvatarFile(avatar);
+
+    const errorHandler = (err: string) => setError(err);
+
     return (
         <div className={styles["container"]}>
             <div className={styles["left"]}>
                 <div className={styles["user-profile"]}>
-                    <img
-                        className={styles["avatar"]}
-                        src={userData.avatarUrl || avatar}
-                        alt="User Avatar"
-                    />
+                    {ownPage && editing ? (
+                        <AvatarEditor
+                            avatarUrl={avatarURL}
+                            onAvatarChange={avatarChangeHandler}
+                            onError={errorHandler}
+                        />
+                    ) : (
+                        <img
+                            className={styles["avatar"]}
+                            src={avatarURL}
+                            alt="Avatar"
+                        />
+                    )}
+
                     <h3 className={styles["username"]}>{userData.username}</h3>
                     {userData.bio && (
-                        <p className={styles["bio"]}>{userData.bio}</p>
+                        <p className={styles["bio"]} ref={bioRef}>
+                            {userData.bio}
+                        </p>
                     )}
                 </div>
+
+                {ownPage && (
+                    <button className={styles.edit} onClick={toggleEditing}>
+                        Edit profile
+                    </button>
+                )}
+
+                {loading && <Spinner />}
+                {error && <p className={styles.error}>{error}</p>}
+
+                {ownPage && editing && (
+                    <UserEditForm
+                        onSubmit={submitHandler}
+                        onCancel={cancelHandler}
+                        bio={userData.bio}
+                    />
+                )}
             </div>
 
             <div className={styles["right"]}>
