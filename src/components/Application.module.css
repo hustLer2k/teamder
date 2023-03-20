@@ -1,25 +1,59 @@
 .container {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-    background-color: hsl(0, 0%, 99.3%);
     padding: 1rem;
     border-radius: 0.69rem;
 
     color: hsl(0, 0%, 10%);
     font: 1.15rem/1.5 "Roboto", sans-serif;
-    width: 77%;
+    width: 100%;
+    max-width: 40rem;
 
     word-break: break-word;
 
-    background-color: hsl(0, 0%, 40%);
+    background-color: hsl(0, 0%, 87%);
     color: white;
+    position: relative;
+}
+
+.container svg {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: black;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.container:hover svg {
+    opacity: 1;
 }
 
 .container h4 {
-    font: 500 1.2rem "Roboto", sans-serif;
+    font: 500 1.33rem "Roboto", sans-serif;
     margin-bottom: 0.28rem;
-    color: hsl(0, 3%, 80%);
+    color: hsl(0, 3%, 30%);
 }
 
 .container > div:not(:first-child) > h4 {
     margin-top: 0.77rem;
+}
+
+.container p {
+    color: var(--text-color);
+    font: 1.2rem "Open Sans", sans-serif;
+}
+
+p.rejected {
+    font-weight: bold;
+    color: var(--error-color);
+}
+
+p.pending {
+    font-weight: bold;
+}
+
+p.error {
+    font-weight: bold;
+    color: var(--error-color);
 }

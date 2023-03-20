@@ -2,6 +2,7 @@ import styles from "./ProjectsCatalogue.module.css";
 import type { Project } from "../routes/Projects";
 import Roles from "./Roles";
 import { Link } from "react-router-dom";
+import AvatarSlideshow from "./AvatarSlideshow";
 
 export default function ProjectsCatalogue({
     projects,
@@ -25,6 +26,7 @@ export default function ProjectsCatalogue({
 
                     <div className={styles["right-side"]}>
                         <p>{project.shortDescription}</p>
+                        {/* <AvatarSlideshow avatars={project.avatarURLs} /> */}
                         <Roles roles={project.openedRoles} />
                     </div>
                 </Link>

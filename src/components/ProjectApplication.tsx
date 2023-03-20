@@ -92,9 +92,10 @@ export default function ProjectApplication({
                     role: responseJSON.roleRequest,
                     CVUrl: responseJSON.resumeURL,
                     date: responseJSON.applicationDate,
+                    status: responseJSON.status,
+                    id: responseJSON.id,
                 };
 
-                console.log(responseJSON);
                 dispatch(add({ ...application, id: +projectId }));
 
                 setStatus(

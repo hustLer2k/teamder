@@ -1,0 +1,38 @@
+.container {
+    width: 3rem;
+    height: 3rem;
+
+    background-color: rgb(212 215 220);
+    border-radius: 1.5rem;
+
+    transition: all 0.3s linear;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    overflow: hidden;
+}
+
+.container:hover {
+    background-color: rgb(100 45 143);
+    border-radius: 0.75rem;
+}
+
+.slideshow_frame {
+    height: 100%;
+    position: relative;
+
+    animation: Slideshow 5s linear infinite alternate;
+}
+
+@keyframes Slideshow {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+}

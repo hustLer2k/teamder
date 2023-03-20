@@ -56,6 +56,7 @@ function App() {
                                 date: application.applicationDate,
                                 projectName: application.projectName,
                                 projectId: application.projectId,
+                                status: application.status,
                             })
                         )
                 );
