@@ -29,7 +29,6 @@ export default function Project() {
     const [token, , userId] = useToken();
     const project = useLoaderData() as ProjectLoaderData;
 
-    const ownsProject = userId === project.ownerId;
     const isTeamMember = project.teamMembers.some(
         (member) => member.userId === userId
     );
@@ -65,7 +64,7 @@ export default function Project() {
                     <h3>Opened roles</h3>
                     <Roles roles={openedRolesNames} centerize={true} />
 
-                    {!ownsProject && !isTeamMember && token && (
+                    {!isTeamMember && token && (
                         <button
                             className={styles["apply-toggler"]}
                             onClick={toggleApplyForm}

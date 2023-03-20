@@ -3,7 +3,6 @@ import type { Project } from "../routes/Projects";
 import Roles from "./Roles";
 import { Link } from "react-router-dom";
 
-
 export default function ProjectsCatalogue({
     projects,
 }: {
@@ -12,7 +11,11 @@ export default function ProjectsCatalogue({
     return (
         <div className={styles.projects}>
             {projects.map((project) => (
-                <Link to={project.id.toString()} className={styles.project} key={project.id}>
+                <Link
+                    to={project.id.toString()}
+                    className={styles.project}
+                    key={project.id}
+                >
                     <div className={styles["left-side"]}>
                         <h3>{project.name}</h3>
                         <span>

@@ -46,7 +46,7 @@ export default function Projects() {
     return loading ? (
         <Spinner big={true} />
     ) : (
-        <div className={styles.container}>
+        <div className={styles.docker_container}>
             <div className={styles.helper}>
                 <h2>Create a new project or join an existing one</h2>
                 <p>Here are the latest enterprise level projects</p>

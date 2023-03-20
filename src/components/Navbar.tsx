@@ -72,6 +72,7 @@ export default function Navbar() {
                         )}
                         <NavLink
                             to="/projects"
+                            onClick={clickHandler}
                             className={({ isActive }) =>
                                 `${styles["nav-link"]} ${
                                     isActive ? styles.active : ""
@@ -82,6 +83,7 @@ export default function Navbar() {
                         </NavLink>
                         <NavLink
                             to="/dashboard"
+                            onClick={clickHandler}
                             className={({ isActive }) =>
                                 `${styles["nav-link"]}  ${
                                     isActive ? styles.active : ""
@@ -96,6 +98,7 @@ export default function Navbar() {
                             <>
                                 <NavLink
                                     to="/signin"
+                                    onClick={clickHandler}
                                     className={({ isActive }) =>
                                         `${styles["nav-link"]}  ${
                                             isActive ? styles.active : ""
@@ -109,6 +112,7 @@ export default function Navbar() {
                                         pathname: "/signin",
                                         search: "?signup=true",
                                     }}
+                                    onClick={clickHandler}
                                     className={({ isActive }) =>
                                         `${styles["nav-link"]} ${
                                             styles["sign-up"]
@@ -121,7 +125,10 @@ export default function Navbar() {
                         )}
 
                         {token && (
-                            <NavLink to={`/users/${userId}`}>
+                            <NavLink
+                                to={`/users/${userId}`}
+                                onClick={clickHandler}
+                            >
                                 <img
                                     className={styles.avatar}
                                     src={avatarURL}
