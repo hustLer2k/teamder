@@ -10,6 +10,7 @@ import { createAvatar } from "@dicebear/core";
 import { botttsNeutral, identicon, thumbs } from "@dicebear/collection";
 import Input from "../components/Input";
 import { InputRef } from "../components/Input";
+import { Style, Options } from "@dicebear/core";
 
 interface UserData {
     id: string;
@@ -112,7 +113,7 @@ export default function UserSettings() {
             imgRef!.current!.src = user!.avatarUrl;
             setAvatarFile(null);
         } else {
-            let ava = createAvatar(AVATARS[avatarIndex], {
+            let ava = createAvatar(AVATARS[avatarIndex] as Style<Options>, {
                 seed,
                 size: 288,
                 radius: 50,
@@ -122,7 +123,11 @@ export default function UserSettings() {
                 imgRef!.current!.src = data;
             });
 
-            setAvatarFile(new Blob([encoder.encode(ava.toString())]));
+            setAvatarFile(
+                new Blob([encoder.encode(ava.toString())], {
+                    type: "image/svg+xml",
+                })
+            );
         }
     }, [avatarIndex, seed, user]);
 
@@ -149,6 +154,8 @@ export default function UserSettings() {
 
         const formData = new FormData(e.currentTarget);
         if (avatarFile) formData.append("profilePicture", avatarFile);
+
+        console.log(avatarFile);
 
         console.log(Object.fromEntries(formData));
 
