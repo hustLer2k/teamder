@@ -30,6 +30,7 @@ export default function DashboardProjects() {
     const [token] = useToken();
 
     const [projects, setProjects] = useState([] as MicroProject[]);
+    const [error, setError] = useState("");
     const [projectApplications, setProjectApplications] = useState(
         {} as ProjectApplications
     );
@@ -126,6 +127,8 @@ export default function DashboardProjects() {
             {projects.map((project) => (
                 <div key={project.id} className={styles.project}>
                     <Link to={`/projects/${project.id}`}>{project.name}</Link>
+
+                    {error && <p>{error}</p>}
 
                     <DashApplications
                         onRemove={removeApplication.bind(null, project.id)}

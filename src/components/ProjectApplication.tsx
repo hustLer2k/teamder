@@ -94,6 +94,7 @@ export default function ProjectApplication({
                     date: responseJSON.applicationDate,
                     status: responseJSON.status,
                     id: responseJSON.id,
+                    projectId: +projectId,
                 };
 
                 dispatch(add({ ...application, id: +projectId }));
