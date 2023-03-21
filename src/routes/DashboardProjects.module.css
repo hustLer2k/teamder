@@ -11,6 +11,7 @@
     text-align: center;
     font: 600 1.69rem "Open Sans", sans-serif;
     text-decoration: none;
+    color: var(--text-color);
 }
 
 .project a:hover {
