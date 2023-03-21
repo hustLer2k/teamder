@@ -7,7 +7,6 @@
 }
 
 .card img {
-    object-fit: cover;
     border-radius: 50%;
     height: 169px;
     width: 169px;

@@ -29,7 +29,9 @@ export default function Dashboard() {
                 </NavLink>
             </nav>
 
-            <Outlet />
+            <div className={styles.content}>
+                <Outlet />
+            </div>
         </section>
     );
 }

@@ -7,7 +7,9 @@ export default function DashboardApplications() {
     const applications = useSelector((state: RootState) => state.applications);
 
     return (
-        <section>
+        <div>
+            <h2>My submissions</h2>
+
             <header className={applicationStyles.container}>
                 <h3
                     className={`${applicationStyles.item} ${applicationStyles.header_item}`}
@@ -44,6 +46,6 @@ export default function DashboardApplications() {
             {applications.map((application) => (
                 <Application key={application.id} {...application} />
             ))}
-        </section>
+        </div>
     );
 }

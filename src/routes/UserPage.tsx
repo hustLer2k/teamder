@@ -114,7 +114,7 @@ export default function UserPage() {
                             onAvatarChange={avatarChangeHandler}
                             onError={errorHandler}
                         />
-                    ) : (
+                    ) : ownPage ? (
                         <Link to="/settings" title="Go to profile settings">
                             <img
                                 className={styles["avatar"]}
@@ -122,6 +122,12 @@ export default function UserPage() {
                                 alt="Avatar"
                             />
                         </Link>
+                    ) : (
+                        <img
+                            className={styles["avatar"]}
+                            src={avatarURL}
+                            alt="Avatar"
+                        />
                     )}
 
                     <h3 className={styles["username"]}>{userData.username} </h3>
