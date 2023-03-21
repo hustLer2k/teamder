@@ -4,12 +4,11 @@ import styles from "./Input.module.css";
 interface Props {
     label: string;
     predicate: (value: string) => readonly [boolean, string];
-    labelVisible?: boolean;
     inputOptions?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
 const Input = forwardRef(function Input(
-    { label, predicate, labelVisible = false, inputOptions = {} }: Props,
+    { label, predicate, inputOptions = {} }: Props,
     inputRef
 ) {
     inputOptions = {

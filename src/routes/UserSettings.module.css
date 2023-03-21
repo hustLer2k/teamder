@@ -1,7 +1,7 @@
 .container {
     max-width: 40rem;
     width: 90%;
-    margin: 4rem auto;
+    margin: 1.69rem auto 0 auto;
 
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@
 .avatar_previewer {
     display: flex;
     align-items: center;
-
+    gap: 2rem;
     position: relative;
 }
 
@@ -29,10 +29,54 @@ button.controls {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    margin: 0 3rem;
     color: black;
 }
 
 button.controls:hover {
     color: rgba(0, 0, 0, 0.69);
+}
+
+.form {
+    margin-top: 2.28rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 50%;
+}
+
+.form > div {
+    width: 100%;
+}
+
+.form input {
+    width: 30rem;
+}
+
+.form button {
+    color: #3e4247;
+    background-color: #f6f8fa;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font: 600 1.228rem "Open Sans", sans-serif;
+    padding: 0.5rem 5rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.form button:hover {
+    background-color: hsl(210, 29%, 93%);
+}
+
+.error {
+    color: var(--error-color);
+    font: 500 1.2rem "Roboto", sans-serif;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .form {
+        width: 69%;
+    }
 }
