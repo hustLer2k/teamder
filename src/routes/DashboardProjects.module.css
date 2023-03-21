@@ -1,0 +1,30 @@
+.projects {
+    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
+}
+
+.project {
+    padding: 1.69rem 5%;
+}
+
+.project a {
+    text-align: center;
+    font: 600 1.69rem "Open Sans", sans-serif;
+    text-decoration: none;
+}
+
+.project a:hover {
+    color: rebeccapurple;
+}
+
+.project:not(:last-child) {
+    border-bottom: 1px solid #999;
+}
+
+.project:nth-child(even) {
+    background-color: hsl(0, 0%, 98%);
+}
+
+.project:nth-child(odd) {
+    background-color: #fff;
+}

@@ -1,25 +1,23 @@
 .container {
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    border-radius: 0.69rem;
-
     color: hsl(0, 0%, 10%);
     font: 1.15rem/1.5 "Roboto", sans-serif;
     width: 100%;
-    max-width: 40rem;
 
     word-break: break-word;
 
-    background-color: hsl(0, 0%, 87%);
-    color: white;
     position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0;
+    align-items: center;
 }
 
 .container svg {
     position: absolute;
     right: 1rem;
     top: 1rem;
-    color: black;
+    color: #555;
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
     cursor: pointer;
@@ -35,25 +33,76 @@
     color: hsl(0, 3%, 30%);
 }
 
-.container > div:not(:first-child) > h4 {
-    margin-top: 0.77rem;
-}
-
 .container p {
     color: var(--text-color);
     font: 1.2rem "Open Sans", sans-serif;
 }
 
 p.rejected {
-    font-weight: bold;
     color: var(--error-color);
 }
 
 p.pending {
-    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.141);
 }
 
 p.error {
     font-weight: bold;
     color: var(--error-color);
+}
+
+.item {
+    padding: 1.69rem 0.5rem;
+    height: 100%;
+    text-align: center;
+
+    font: 1rem "Open Sans", sans-serif;
+}
+
+.header_item {
+    padding: 2.25rem 1rem;
+    text-align: center;
+    font: 500 1.33rem "Roboto", sans-serif;
+}
+
+.item:not(:last-child) {
+    border-right: 1px solid #555;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    padding-top: 0.25rem;
+}
+
+.controls button {
+    color: #3e4247;
+    background-color: #f6f8fa;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font: 500 1.169rem "Roboto", sans-serif;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background-color: hsl(210, 29%, 93%);
+}
+
+@media (max-width: 769px) {
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .item:nth-child(3) {
+        border-right: none;
+    }
+
+    .container:not(:last-child) .item:nth-child(n + 4):nth-child(-n + 6) {
+        border-bottom: 1px solid #999;
+        padding-bottom: 3.33rem;
+    }
 }

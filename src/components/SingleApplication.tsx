@@ -1,21 +1,14 @@
-import styles from "./Application.module.css";
+import styles from "./SingleApplication.module.css";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { remove } from "../store/store";
 import { RootState } from "../store/store";
+import { HiOutlineTrash } from "react-icons/hi";
 import { useState } from "react";
+import { ApplicationType } from "./Application";
 import formatDate from "../lib/format_date";
 
-export interface ApplicationType {
-    id: number;
-    message: string;
-    role: string;
-    CVUrl: string;
-    date: string;
-    status: "REJECTED" | "ACCEPTED" | "WAITING_FOR_REVIEW";
-    projectId: number;
-    projectName?: string;
-}
+import { useNavigate } from "react-router-dom";
 
 export default function Application({
     id,
@@ -24,11 +17,11 @@ export default function Application({
     CVUrl,
     date,
     status,
-    projectName,
-    projectId,
 }: ApplicationType) {
-    const [error, setError] = useState<string | null>(null);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [error, setError] = useState<string | null>(null);
     const token = useSelector((state: RootState) => state.root.token);
 
     const formattedDate = formatDate(date);
@@ -48,6 +41,7 @@ export default function Application({
             .then((res) => {
                 if (res.ok) {
                     dispatch(remove(id));
+                    navigate("");
                 } else {
                     throw new Error(res.statusText);
                 }
@@ -59,28 +53,19 @@ export default function Application({
         <div className={styles.container}>
             {error && <p className={styles.error}>{error}</p>}
 
-            {projectName && (
-                <div className={styles.item}>
-                    <h4>{projectName}</h4>
-                </div>
-            )}
-
-            <div className={styles.item}>
-                <p>{message}</p>
+            <div>
+                <h4>Message</h4> <p>{message}</p>
             </div>
-            <div className={styles.item}>
-                <p>{role}</p>
+            <div>
+                <h4>Role</h4> <p>{role}</p>
             </div>
-            <div className={styles.item}>
-                <p>{formattedDate}</p>
+            <div>
+                <h4>Date</h4> <p>{formattedDate}</p>
             </div>
-            <div className={styles.item}>
-                <p className={statusClass}>{statusText}</p>
+            <div>
+                <h4>Status</h4> <p className={statusClass}>{statusText}</p>
             </div>
-            <div className={`${styles.controls} ${styles.item}`}>
-                <button>Edit</button>
-                <button>Remove</button>
-            </div>
+            <HiOutlineTrash size={28} onClick={handleDelete} />
         </div>
     );
 }

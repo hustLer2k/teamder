@@ -112,7 +112,6 @@ export default function SignUp() {
             }
 
             const data: ResponseBody = await response.json();
-            console.log(data);
 
             if (!data.token) {
                 throw new Error(data.message);

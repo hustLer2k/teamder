@@ -78,6 +78,10 @@
     align-items: center;
 }
 
+.right-side .nav-link {
+    font: 1.333rem "Open Sans", sans-serif;
+}
+
 .sign-up {
     background-color: var(--primary-color);
     color: whitesmoke;

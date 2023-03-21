@@ -1,32 +1,46 @@
-.applications {
-    width: 80%;
-    max-width: 50rem;
-    margin: 2rem auto;
+.dashboard {
+    width: 100%;
 }
 
-.applications nav {
+.dashboard nav {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin-bottom: 1rem;
 
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid hsl(0, 0%, 47%);
-    margin-bottom: 2.28rem;
+    background-color: #f9f9f9;
+    padding: 10px;
+    padding-top: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    width: 100%;
+    background-color: white;
 }
 
-.applications > div {
+.dashboard > div {
     margin-bottom: 2rem;
 }
 
 .nav-link {
-    margin: 0 10px;
     text-decoration: none;
     color: #333333;
-    font: 1.5rem "Roboto", sans-serif;
+    font: 1.5rem "Open Sans", sans-serif;
     display: block;
+
+    padding: 0.69rem 1.33rem;
+    margin: 0 10px;
+    border-radius: 8px;
+}
+
+.nav-link:hover {
+    color: hsl(0, 0%, 47%);
 }
 
 a.active {
     font-weight: bold;
+    /* background-color: hsl(262, 52%, 69%); */
+    /* color: #fff; */
 }
+
+/* a.active:hover {
+    color: #f5f5f5;
+} */

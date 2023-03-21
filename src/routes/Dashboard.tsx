@@ -7,10 +7,11 @@ import { NavLink, Outlet } from "react-router-dom";
 
 export default function Dashboard() {
     return (
-        <section className={styles.applications}>
+        <section className={styles.dashboard}>
             <nav>
                 <NavLink
                     to="/dashboard"
+                    end
                     className={({ isActive }) =>
                         `${styles["nav-link"]} ${isActive ? styles.active : ""}`
                     }
@@ -19,7 +20,7 @@ export default function Dashboard() {
                 </NavLink>
 
                 <NavLink
-                    to="projects"
+                    to="/dashboard/projects"
                     className={({ isActive }) =>
                         `${styles["nav-link"]} ${isActive ? styles.active : ""}`
                     }

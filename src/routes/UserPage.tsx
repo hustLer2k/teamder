@@ -87,8 +87,6 @@ export default function UserPage() {
         )
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
-
                 if (data.message) {
                     setError(data.message);
                 } else {
@@ -195,7 +193,6 @@ export default function UserPage() {
 
 export async function userLoader(args: LoaderFunctionArgs) {
     const { userId } = args.params;
-    console.log(userId);
 
     if (!userId) return redirect("/");
 

@@ -35,7 +35,7 @@ const applicationsSlice = createSlice({
             state.push(action.payload);
         },
         remove: (state, action: PayloadAction<number>) => {
-            state.filter((app) => app.id !== action.payload);
+            state = state.filter((app) => app.id !== action.payload);
         },
     },
 });

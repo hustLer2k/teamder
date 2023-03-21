@@ -81,17 +81,19 @@ export default function Navbar() {
                         >
                             Explore
                         </NavLink>
-                        <NavLink
-                            to="/dashboard"
-                            onClick={clickHandler}
-                            className={({ isActive }) =>
-                                `${styles["nav-link"]}  ${
-                                    isActive ? styles.active : ""
-                                }`
-                            }
-                        >
-                            Dashboard
-                        </NavLink>
+                        {token && (
+                            <NavLink
+                                to="/dashboard"
+                                onClick={clickHandler}
+                                className={({ isActive }) =>
+                                    `${styles["nav-link"]}  ${
+                                        isActive ? styles.active : ""
+                                    }`
+                                }
+                            >
+                                Dashboard
+                            </NavLink>
+                        )}
                     </div>
                     <div className={styles["right-side"]}>
                         {!token && (

@@ -2,7 +2,7 @@ import styles from "./ProjectApplication.module.css";
 import DropFile from "./DropInput";
 import useToken from "../hooks/useToken";
 import { useState, useEffect } from "react";
-import Application from "./Application";
+import SingleApplication from "./SingleApplication";
 import Spinner from "./Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../store/store";
@@ -31,7 +31,7 @@ export default function ProjectApplication({
             setStatus(
                 <>
                     <h3>Your application</h3>
-                    <Application {...application} />
+                    <SingleApplication {...application} />
                 </>
             );
         }
@@ -101,7 +101,7 @@ export default function ProjectApplication({
                 setStatus(
                     <>
                         <h3>Your application</h3>
-                        <Application {...application} />
+                        <SingleApplication {...application} />
                     </>
                 );
             })
