@@ -25,6 +25,7 @@ import CreateProject from "./routes/CreateProject";
 import Dashboard from "./routes/Dashboard";
 import DashboardApplications from "./routes/DashboardApplications";
 import DashboardProjects from "./routes/DashboardProjects";
+import UserSettings from "./routes/UserSettings";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -41,6 +42,7 @@ const router = createBrowserRouter(
                     </Route>
                     <Route path="projects" element={<Projects />} />
                     <Route path="projects/create" element={<CreateProject />} />
+                    <Route path="settings" element={<UserSettings />} />
                     <Route
                         path="projects/:projectId"
                         element={<Project />}

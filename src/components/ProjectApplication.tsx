@@ -11,9 +11,11 @@ import type { RootState } from "../store/store";
 export default function ProjectApplication({
     openedRolesNames,
     projectId,
+    projectName,
 }: {
     openedRolesNames: string[];
     projectId: string;
+    projectName: string;
 }) {
     const dispatch = useDispatch();
     const applications = useSelector((state: RootState) => state.applications);
@@ -95,6 +97,7 @@ export default function ProjectApplication({
                     status: responseJSON.status,
                     id: responseJSON.id,
                     projectId: +projectId,
+                    projectName,
                 };
 
                 dispatch(add({ ...application, id: +projectId }));

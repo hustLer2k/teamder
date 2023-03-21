@@ -77,6 +77,7 @@ export default function Project() {
                         <ProjectApplication
                             openedRolesNames={openedRolesNames}
                             projectId={project.id}
+                            projectName={project.name}
                         />
                     )}
                 </div>

@@ -115,14 +115,16 @@ export default function UserPage() {
                             onError={errorHandler}
                         />
                     ) : (
-                        <img
-                            className={styles["avatar"]}
-                            src={avatarURL}
-                            alt="Avatar"
-                        />
+                        <Link to="/settings" title="Go to profile settings">
+                            <img
+                                className={styles["avatar"]}
+                                src={avatarURL}
+                                alt="Avatar"
+                            />
+                        </Link>
                     )}
 
-                    <h3 className={styles["username"]}>{userData.username}</h3>
+                    <h3 className={styles["username"]}>{userData.username} </h3>
                     {userData.bio && (
                         <p className={styles["bio"]} ref={bioRef}>
                             {userData.bio}

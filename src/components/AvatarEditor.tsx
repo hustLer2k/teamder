@@ -2,19 +2,23 @@ import styles from "./AvatarEditor.module.css";
 import userPageStyles from "../routes/UserPage.module.css";
 import { TbPhotoEdit } from "react-icons/tb";
 import defaultAvatar from "../assets/avatar.svg";
-import { useRef, useState } from "react";
+import { useRef, useState, forwardRef } from "react";
 import getExtension from "../lib/get_extension";
 
-export default function AvatarEditor({
-    avatarUrl,
-    onAvatarChange,
-    onError,
-}: {
-    avatarUrl: string | null;
-    onAvatarChange: (avatar: File) => void;
-    onError: (error: string) => void;
-}) {
+const AvatarEditor = forwardRef(function (
+    {
+        avatarUrl,
+        onAvatarChange,
+        onError,
+    }: {
+        avatarUrl: string | null | undefined;
+        onAvatarChange: (avatar: File) => void;
+        onError: (error: string) => void;
+    },
+    imgRef: React.Ref<HTMLImageElement>
+) {
     const [avatar, setAvatar] = useState(avatarUrl || defaultAvatar);
+
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const fileChangeHandler = async (
@@ -51,6 +55,7 @@ export default function AvatarEditor({
             <img
                 className={userPageStyles["avatar"]}
                 src={avatar}
+                ref={imgRef}
                 alt="User Avatar"
             />
 
@@ -63,4 +68,6 @@ export default function AvatarEditor({
             />
         </>
     );
-}
+});
+
+export default AvatarEditor;

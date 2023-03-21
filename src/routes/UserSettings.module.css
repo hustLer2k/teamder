@@ -1,0 +1,38 @@
+.container {
+    max-width: 40rem;
+    width: 90%;
+    margin: 4rem auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container img {
+    margin: 2rem auto;
+}
+
+.avatar_previewer {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+}
+
+.avatar_previewer button {
+    position: absolute;
+    left: 25%;
+}
+
+button.controls {
+    position: static;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0 3rem;
+    color: black;
+}
+
+button.controls:hover {
+    color: rgba(0, 0, 0, 0.69);
+}
