@@ -117,7 +117,7 @@ export default function DashboardProjects() {
 
     if (!token) {
         navigate("/signin");
-        return;
+        return <h2>Redirecting...</h2>;
     }
 
     return loading ? (
