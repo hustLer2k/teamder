@@ -92,7 +92,10 @@ export default function UserPage() {
                 } else {
                     setAvatarURL(data.avatarUrl);
                     toggleEditing();
-                    bioRef!.current!.textContent = data.bio;
+
+                    if (bioRef.current) {
+                        bioRef.current.textContent = data.bio;
+                    }
                 }
             })
             .catch((err) => setError(err.message))
