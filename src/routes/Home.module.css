@@ -1,0 +1,87 @@
+.wrapper {
+    height: 100vh;
+    padding: 4rem 1.5rem;
+    text-align: center;
+    font-family: Inter, "sans-serif";
+}
+
+.hero_texts h1 {
+    background-clip: text;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+}
+
+.hero_texts h1 span {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+
+    position: relative;
+    z-index: 1;
+}
+
+.hero_texts h1 span::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+        to bottom,
+        hsl(344, 100%, 50%),
+        hsl(31, 100%, 40%)
+    );
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    opacity: 0;
+}
+
+.first_word {
+    --start-color: #007cf0;
+    --end-color: #00dfd8;
+    animation: WordGradient 4s linear infinite;
+}
+
+.second_word {
+    --start-color: #7928ca;
+    --end-color: #ff0080;
+    animation: WordGradient 4s linear infinite;
+}
+
+.third_word {
+    --start-color: #5c258d;
+    --end-color: #4389a2;
+    animation: WordGradient 4s linear infinite;
+}
+
+@keyframes WordGradient {
+    0% {
+        background-image: linear-gradient(
+            to right,
+            var(--start-color),
+            var(--end-color)
+        );
+    }
+
+    100% {
+        background-image: linear-gradient(to right, black, black);
+    }
+}
+
+@media (min-width: 1269px) {
+    /* .wrapper {
+                margin-left: 3%;
+                margin-right: 3%;
+            } */
+
+    .hero_texts h1 {
+        font-size: 6rem;
+    }
+}

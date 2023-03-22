@@ -11,6 +11,7 @@
   "dependencies": {
     "@dicebear/collection": "^5.3.4",
     "@dicebear/core": "^5.3.4",
+    "@fontsource/inter": "^4.5.15",
     "@fontsource/open-sans": "^4.5.14",
     "@fontsource/roboto": "^4.5.8",
     "@reduxjs/toolkit": "^1.9.3",

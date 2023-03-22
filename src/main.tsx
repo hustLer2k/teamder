@@ -2,6 +2,8 @@ import "@fontsource/open-sans";
 import "@fontsource/open-sans/600.css";
 import "@fontsource/roboto";
 import "@fontsource/roboto/500.css";
+import "@fontsource/inter";
+import "@fontsource/inter/800.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -27,12 +29,14 @@ import DashboardApplications from "./routes/DashboardApplications";
 import DashboardProjects from "./routes/DashboardProjects";
 import UserSettings from "./routes/UserSettings";
 import DashboardProjectsManager from "./routes/DashboardProjectsManager";
+import Home from "./routes/Home";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
             <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
                 <Route errorElement={<ErrorPage />}>
+                    <Route index element={<Home />} />
                     <Route path="signin" element={<SignUp />} />
                     <Route path="dashboard" element={<Dashboard />}>
                         <Route index element={<DashboardApplications />} />

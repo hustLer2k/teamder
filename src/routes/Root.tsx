@@ -92,8 +92,8 @@ function App() {
                     </span>
                 </div>
                 <div className={styles["footer-row"]}>
-                    <Link to="/about">About</Link>
-                    <Link to="/about">Contact us</Link>
+                    <Link to="/">Home</Link>
+                    <Link to="/contact">Contact us</Link>
                 </div>
             </footer>
         </div>

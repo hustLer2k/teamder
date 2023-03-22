@@ -13,7 +13,7 @@ footer {
     bottom: 0;
     background-color: white;
     color: rgb(102 102 102);
-    padding: 1rem;
+    padding-bottom: 1rem;
     border-top: 1px solid rgb(234 234 234);
 }
 
@@ -35,7 +35,7 @@ footer a:hover {
 }
 
 .logo {
-    height: 50px;
+    height: 93px;
     margin-right: 1rem;
 }
 
