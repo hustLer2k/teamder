@@ -1,4 +1,4 @@
-export default function formatDate(date: string) {
+export default function formatDate(date: string, long = false) {
     const UTCDate = new Date(
         Date.UTC(
             parseInt(date.slice(0, 4)), // Year
@@ -15,8 +15,8 @@ export default function formatDate(date: string) {
         year: "numeric",
         month: "short",
         day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
+        hour: long ? "2-digit" : undefined,
+        minute: long ? "2-digit" : undefined,
     }).format(new Date(UTCDate));
 
     return formattedDate;

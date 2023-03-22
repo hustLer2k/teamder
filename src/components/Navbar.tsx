@@ -133,7 +133,7 @@ export default function Navbar() {
                             >
                                 <img
                                     className={styles.avatar}
-                                    src={avatarURL}
+                                    src={avatarURL || logo}
                                     alt="Avatar"
                                 />
                             </NavLink>

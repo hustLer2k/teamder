@@ -22,6 +22,7 @@ function App() {
     const [token] = useToken();
     const navigation = useNavigation();
     const dispatch = useDispatch();
+    console.log(token);
 
     useEffect(() => {
         if (!token) return;

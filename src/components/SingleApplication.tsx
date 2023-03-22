@@ -24,17 +24,19 @@ export default function Application({
     const [error, setError] = useState<string | null>(null);
     const token = useSelector((state: RootState) => state.root.token);
 
-    const formattedDate = formatDate(date);
+    const formattedDate = formatDate(date, true);
 
     const statusClass =
         status === "REJECTED" ? styles.rejected : styles.pending;
     const statusText = status === "REJECTED" ? "Rejected" : "Pending";
 
+    console.log(`https://teamder-dev.herokuapp.com/api/applications/${id}`);
+    console.log(token);
+
     const handleDelete = () => {
         fetch(`https://teamder-dev.herokuapp.com/api/applications/${id}`, {
             method: "DELETE",
             headers: {
-                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
         })

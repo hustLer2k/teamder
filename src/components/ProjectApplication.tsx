@@ -66,6 +66,7 @@ export default function ProjectApplication({
         }
 
         formData.append("cv", CV);
+        console.log(Object.fromEntries(formData));
 
         setStatus(<Spinner />);
         fetch(
@@ -89,6 +90,7 @@ export default function ProjectApplication({
                 }
             })
             .then((responseJSON) => {
+                console.log(responseJSON)
                 let application = {
                     message: responseJSON.message,
                     role: responseJSON.roleRequest,

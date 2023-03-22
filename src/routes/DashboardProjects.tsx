@@ -3,26 +3,12 @@ import { useState, useEffect } from "react";
 import useToken from "../hooks/useToken";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
+import ArrowedLink from "../components/ArrowedLink";
 import { Link } from "react-router-dom";
-import DashApplications from "../components/DashApplications";
 
 interface MicroProject {
     id: number;
     name: string;
-}
-
-export interface ProjectApplication {
-    id: number;
-    username: string;
-    contact: string;
-    applicantMessage: string;
-    role: string;
-    resumeURL: string;
-    applicationDate: string;
-}
-
-interface ProjectApplications {
-    [id: string]: ProjectApplication[];
 }
 
 export default function DashboardProjects() {
@@ -31,53 +17,8 @@ export default function DashboardProjects() {
 
     const [projects, setProjects] = useState([] as MicroProject[]);
     const [error, setError] = useState("");
-    const [projectApplications, setProjectApplications] = useState(
-        {} as ProjectApplications
-    );
+
     const [loading, setLoading] = useState(false);
-
-    async function fetchApplications(projectId: number) {
-        try {
-            const res = await fetch(
-                `https://teamder-dev.herokuapp.com/api/projects/${projectId}/applications`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        Accept: "application/json",
-                    },
-                }
-            );
-
-            if (
-                res.ok &&
-                res.headers.get("Content-Type") === "application/json"
-            ) {
-                const data = await res.json();
-
-                projectId in projectApplications
-                    ? projectApplications[projectId].push(...data.content)
-                    : (projectApplications[projectId] = [...data.content]);
-            } else {
-                throw new Error(res.statusText || "Something went wrong");
-            }
-        } catch (err) {
-            if (err instanceof Error) {
-                setError(err.message);
-                console.error(err.message);
-            }
-        }
-    }
-
-    function removeApplication(projectId: number, applicationId: number) {
-        const newApplications = projectApplications[projectId].filter(
-            (app) => app.id !== applicationId
-        );
-
-        setProjectApplications({
-            ...projectApplications,
-            [projectId]: newApplications,
-        });
-    }
 
     useEffect(() => {
         if (!token) return;
@@ -104,15 +45,9 @@ export default function DashboardProjects() {
             })
             .then((data) => {
                 setProjects(data.content);
-
-                const promises: Promise<void>[] = [];
-                data.content.forEach((project: MicroProject) => {
-                    promises.push(fetchApplications(project.id));
-                });
-
-                Promise.all(promises).then(() => setLoading(false));
             })
-            .catch((err) => setError(err.message));
+            .catch((err) => setError(err.message))
+            .finally(() => setLoading(false));
     }, [token]);
 
     if (!token) {
@@ -123,20 +58,38 @@ export default function DashboardProjects() {
     return loading ? (
         <Spinner big />
     ) : (
-        <div className={styles.projects}>
-            {projects.map((project) => (
-                <div key={project.id} className={styles.project}>
-                    <Link to={`/projects/${project.id}`}>{project.name}</Link>
+        <>
+            <h2 className="dashboard_header">My Projects</h2>
+            <div className="dashboard_wrapper">
+                <header className={styles.container}>
+                    <h3 className={`${styles.item} ${styles.header_item}`}>
+                        Project Name
+                    </h3>
+                    <h3 className={`${styles.item} ${styles.header_item}`}>
+                        Publication date
+                    </h3>
+                    <h3 className={`${styles.item} ${styles.header_item}`}>
+                        Role
+                    </h3>
+                    <h3 className={`${styles.item} ${styles.header_item}`}></h3>
+                </header>
 
-                    {error && <p>{error}</p>}
+                {error && <p className="error">{error}</p>}
 
-                    <DashApplications
-                        onRemove={removeApplication.bind(null, project.id)}
-                        applications={projectApplications[project.id]}
-                        token={token}
-                    />
-                </div>
-            ))}
-        </div>
+                {projects.map((project) => (
+                    <div key={project.id} className={styles.container}>
+                        <div className={styles.item}>
+                            <h4>{project.name}</h4>
+                        </div>
+                        <div className={styles.item}>
+                            <ArrowedLink
+                                to={`${project.id}`}
+                                text="View applications"
+                            />
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </>
     );
 }

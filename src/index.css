@@ -27,3 +27,25 @@
 body {
     height: 100vh;
 }
+
+.dashboard_header {
+    text-align: center;
+    font: bold 2rem "Open Sans", sans-serif;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.141);
+}
+
+.dashboard_wrapper {
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+.error {
+    text-align: center;
+    font: bold 1.5rem "Open Sans", sans-serif;
+    color: var(--error-color);
+}

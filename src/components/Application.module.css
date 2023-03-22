@@ -13,20 +13,6 @@
     align-items: center;
 }
 
-.container svg {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    color: #555;
-    opacity: 0;
-    transition: opacity 0.1s ease-in-out;
-    cursor: pointer;
-}
-
-.container:hover svg {
-    opacity: 1;
-}
-
 .container h4 {
     font: 500 1.33rem "Roboto", sans-serif;
     margin-bottom: 0.28rem;
@@ -60,13 +46,12 @@ p.error {
 }
 
 .header_item {
-    padding: 2.25rem 1rem;
+    padding: 1.5rem 1rem;
     text-align: center;
-    font: 500 1.33rem "Roboto", sans-serif;
-}
-
-.item:not(:last-child) {
-    border-right: 1px solid #555;
+    font: 500 1.1rem "Roboto", sans-serif;
+    background-color: hsl(0, 0%, 93%);
+    color: hsl(0, 0%, 47%);
+    text-transform: uppercase;
 }
 
 .controls {
@@ -80,16 +65,23 @@ p.error {
 
 .controls button {
     color: #3e4247;
-    background-color: #f6f8fa;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    font: 500 1.169rem "Roboto", sans-serif;
-    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
+    margin-top: 1rem;
+
+    display: flex;
+    align-items: center;
 }
 
 .controls button:hover {
-    background-color: hsl(210, 29%, 93%);
+    color: hsl(0, 0%, 10%);
+}
+
+@media (min-width: 769px) {
+    .container:not(:last-child) .item {
+        border-bottom: 1px solid #999;
+    }
 }
 
 @media (max-width: 769px) {
@@ -97,12 +89,7 @@ p.error {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .item:nth-child(3) {
-        border-right: none;
-    }
-
     .container:not(:last-child) .item:nth-child(n + 4):nth-child(-n + 6) {
         border-bottom: 1px solid #999;
-        padding-bottom: 3.33rem;
     }
 }

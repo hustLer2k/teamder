@@ -5,6 +5,8 @@ import { remove } from "../store/store";
 import { RootState } from "../store/store";
 import { useState } from "react";
 import formatDate from "../lib/format_date";
+import { AiOutlineEdit } from "react-icons/ai";
+import { HiOutlineTrash } from "react-icons/hi";
 
 export interface ApplicationType {
     id: number;
@@ -78,8 +80,12 @@ export default function Application({
                 <p className={statusClass}>{statusText}</p>
             </div>
             <div className={`${styles.controls} ${styles.item}`}>
-                <button>Edit</button>
-                <button>Remove</button>
+                <button>
+                    <AiOutlineEdit size={32} />
+                </button>
+                <button>
+                    <HiOutlineTrash size={32} />
+                </button>
             </div>
         </div>
     );
