@@ -1,5 +1,5 @@
 .main {
-    padding-bottom: 7.77rem;
+    padding-bottom: 9rem;
 }
 
 .root-container {
@@ -13,7 +13,7 @@ footer {
     bottom: 0;
     background-color: white;
     color: rgb(102 102 102);
-    padding-bottom: 1rem;
+    padding: 0 1.5rem 1rem 1.5rem;
     border-top: 1px solid rgb(234 234 234);
 }
 
