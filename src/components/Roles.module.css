@@ -18,8 +18,9 @@
     flex-basis: calc(100% / 3.5);
     margin-top: 1rem;
     font-weight: bold;
-    white-space: nowrap;
     position: relative;
+    max-width: 100%;
+    height: max-content;
 }
 
 .roles-container span svg {

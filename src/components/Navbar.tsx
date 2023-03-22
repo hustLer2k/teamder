@@ -1,5 +1,5 @@
 import styles from "./Navbar.module.css";
-import logo from "../assets/avatar.svg";
+import logo from "../assets/logo.png";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
@@ -67,7 +67,7 @@ export default function Navbar() {
                                     alt="logo"
                                     className={styles["logo"]}
                                 />
-                                <h2 className={styles["header"]}>Teamder</h2>{" "}
+                                {/* <h2 className={styles["header"]}>Teamder</h2>{" "} */}
                             </>
                         )}
                         <NavLink

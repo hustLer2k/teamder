@@ -6,6 +6,8 @@ import Navbar from "../components/Navbar";
 import Spinner from "../components/Spinner";
 import { useDispatch } from "react-redux";
 import { add } from "../store/store";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 interface ApplicationsResponse {
     id: number;
@@ -76,6 +78,24 @@ function App() {
                     <Outlet />
                 )}
             </main>
+
+            <footer>
+                <div className={styles["footer-row"]}>
+                    <img
+                        src={logo}
+                        alt="Company logo"
+                        className={styles["logo"]}
+                    />
+                    {/* <h3 className={styles["company-name"]}>Teamder</h3> */}
+                    <span>
+                        Copyright © 2023 Teamder Inc. All rights reserved.
+                    </span>
+                </div>
+                <div className={styles["footer-row"]}>
+                    <Link to="/about">About</Link>
+                    <Link to="/about">Contact us</Link>
+                </div>
+            </footer>
         </div>
     );
 }
