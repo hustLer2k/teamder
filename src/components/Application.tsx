@@ -7,6 +7,12 @@ import { useState } from "react";
 import formatDate from "../lib/format_date";
 import { AiOutlineEdit } from "react-icons/ai";
 import { HiOutlineTrash } from "react-icons/hi";
+import ApplicationStatus from "./ApplicationStatus";
+
+export type ApplicationStatuses =
+    | "REJECTED"
+    | "ACCEPTED"
+    | "WAITING_FOR_REVIEW";
 
 export interface ApplicationType {
     id: number;
@@ -14,7 +20,7 @@ export interface ApplicationType {
     role: string;
     CVUrl: string;
     date: string;
-    status: "REJECTED" | "ACCEPTED" | "WAITING_FOR_REVIEW";
+    status: ApplicationStatuses;
     projectId: number;
     projectName?: string;
 }
@@ -34,10 +40,6 @@ export default function Application({
     const token = useSelector((state: RootState) => state.root.token);
 
     const formattedDate = formatDate(date);
-
-    const statusClass =
-        status === "REJECTED" ? styles.rejected : styles.pending;
-    const statusText = status === "REJECTED" ? "Rejected" : "Pending";
 
     const handleDelete = () => {
         fetch(`https://teamder-dev.herokuapp.com/api/applications/${id}`, {
@@ -77,14 +79,14 @@ export default function Application({
                 <p>{formattedDate}</p>
             </div>
             <div className={styles.item}>
-                <p className={statusClass}>{statusText}</p>
+                <ApplicationStatus status={status} />
             </div>
             <div className={`${styles.controls} ${styles.item}`}>
                 <button>
-                    <AiOutlineEdit size={32} />
+                    <AiOutlineEdit size={36} />
                 </button>
                 <button>
-                    <HiOutlineTrash size={32} />
+                    <HiOutlineTrash size={36} />
                 </button>
             </div>
         </div>

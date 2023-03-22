@@ -6,12 +6,10 @@ export default function Pagination({
     baseLink,
     totalPages,
     currentPage,
-    className = "",
 }: {
     baseLink: string;
     totalPages: number;
     currentPage: number;
-    className?: string;
 }) {
     const pages: JSX.Element[] = [];
 
@@ -37,12 +35,9 @@ export default function Pagination({
     }
 
     return (
-        <nav
-            className={`${styles.pagination} ${className}`}
-            aria-label="Pagination"
-        >
+        <nav className={styles.pagination} aria-label="Pagination">
             <Link
-                to={`${baseLink}?page=${Math.max(1, currentPage - 1)}`}
+                to={`${baseLink}?page=${Math.max(0, currentPage - 1)}`}
                 className={`${styles.chevron} ${styles.left}`}
             >
                 <FiChevronLeft size={24} aria-hidden="true" />

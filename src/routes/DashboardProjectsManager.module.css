@@ -1,0 +1,44 @@
+.project_link {
+    display: inline;
+    color: var(--primary-color);
+}
+
+.project_link:hover {
+    color: #683ab7aa;
+}
+
+.project_link::after {
+    content: '" ';
+}
+
+.project_link::before {
+    content: '"';
+}
+
+p.role {
+    font: 500 1.2rem "Roboto", sans-serif;
+}
+
+.resume_link {
+    text-decoration: none;
+    color: var(--primary-color);
+    font: 1.2rem "Roboto", sans-serif;
+}
+
+.resume_link:hover {
+    color: #683ab7aa;
+}
+
+.accept {
+    color: #4caf50;
+}
+.accept:hover {
+    color: #6fbf73;
+}
+
+.reject {
+    color: #b2102f;
+}
+.reject:hover {
+    color: #ff1744;
+}

@@ -3,9 +3,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import applicationStyles from "../components/Application.module.css";
 import Pagination from "../components/Pagination";
+import { useSearchParams } from "react-router-dom";
 
 export default function DashboardApplications() {
     const applications = useSelector((state: RootState) => state.applications);
+    const totalPages = Math.ceil(applications.length / 10);
+    const [searchParams] = useSearchParams();
+    const page = searchParams.get("page") || "0";
 
     return (
         <>
@@ -44,10 +48,18 @@ export default function DashboardApplications() {
                     </h3>
                 </header>
 
-                {applications.map((application) => (
-                    <Application key={application.id} {...application} />
-                ))}
+                {applications
+                    .slice(+page * 10, (+page + 1) * 10)
+                    .map((application) => (
+                        <Application key={application.id} {...application} />
+                    ))}
             </div>
+
+            <Pagination
+                baseLink={window.location.pathname}
+                totalPages={totalPages}
+                currentPage={+page}
+            />
         </>
     );
 }

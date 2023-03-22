@@ -42,6 +42,7 @@ export default function Project() {
     const [showApplyForm, setShowApplyForm] = useState(false);
     const toggleApplyForm = () => setShowApplyForm((prevState) => !prevState);
     const Arrow = showApplyForm ? AiOutlineArrowUp : AiOutlineArrowDown;
+
     return (
         <div className={styles.container}>
             <header>
@@ -59,7 +60,7 @@ export default function Project() {
 
             <p className={styles["description"]}>{project.description}</p>
 
-            {openedRolesNames.length && (
+            {!!openedRolesNames.length && (
                 <div className={styles["opened-roles"]}>
                     <h3>Opened roles</h3>
                     <Roles roles={openedRolesNames} centerize={true} />

@@ -2,7 +2,7 @@
     width: 100%;
 }
 
-.dashboard nav {
+.dashboard > nav {
     display: flex;
     justify-content: space-evenly;
     align-items: center;

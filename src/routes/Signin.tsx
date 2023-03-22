@@ -106,9 +106,9 @@ export default function SignUp() {
             );
 
             if (!response.ok) {
-                const FOKYOU = await response.json();
-                console.error(FOKYOU);
-                throw new Error("Invalid credentials.");
+                const datas = await response.json();
+                console.error(datas);
+                throw new Error(datas?.message || "Something went wrong.");
             }
 
             const data: ResponseBody = await response.json();

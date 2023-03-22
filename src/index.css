@@ -48,4 +48,5 @@ body {
     text-align: center;
     font: bold 1.5rem "Open Sans", sans-serif;
     color: var(--error-color);
+    margin: 1.5rem 0;
 }

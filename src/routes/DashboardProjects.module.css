@@ -38,11 +38,21 @@ p.error {
 }
 
 .item {
-    padding: 1.69rem 0.5rem;
+    padding: 1.69rem 1rem;
     height: 100%;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
     font: 1rem "Open Sans", sans-serif;
+}
+
+.item a {
+    margin: 0;
+}
+
+a.not_owns {
+    color: royalblue;
 }
 
 .header_item {
@@ -78,6 +88,10 @@ p.error {
     color: hsl(0, 0%, 10%);
 }
 
+.switcher {
+    cursor: pointer;
+}
+
 @media (min-width: 769px) {
     .container:not(:last-child) .item {
         border-bottom: 1px solid #999;
@@ -89,7 +103,7 @@ p.error {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .container:not(:last-child) .item:nth-child(n + 4):nth-child(-n + 6) {
+    .container:not(:last-child) .item:nth-child(n + 3):nth-child(-n + 4) {
         border-bottom: 1px solid #999;
     }
 }
