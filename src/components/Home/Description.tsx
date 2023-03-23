@@ -2,8 +2,8 @@ import styles from "./Description.module.css";
 import { Link } from "react-router-dom";
 import SectionLabel from "./SectionLabel";
 import code_collaboration from "../../assets/code_collaboration.svg";
-import join_forces from "../../assets/join_forces.avif";
-import partnership from "../../assets/partnership.avif";
+import handshake from "../../assets/handshake.webp";
+import collaboration from "../../assets/collaboration.jpg";
 
 export default function Description() {
     return (
@@ -42,7 +42,7 @@ export default function Description() {
                 to on your own. Joining forces can lead to new opportunities and
                 can help you achieve success more quickly.
             </p>
-            <img src={join_forces} alt="Two coworkers" />
+            <img src={collaboration} alt="Two coworkers" />
 
             <SectionLabel
                 title="Collaborate"
@@ -75,7 +75,7 @@ export default function Description() {
                 Partnerships can help you grow your business, expand your reach,
                 and achieve your objectives more efficiently and effectively.
             </p>
-            <img src={partnership} alt="Handshake" />
+            <img src={handshake} alt="Handshake" />
         </>
     );
 }
