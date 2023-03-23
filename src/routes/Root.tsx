@@ -22,7 +22,6 @@ interface ApplicationsResponse {
 
 function App() {
     const [token] = useToken();
-    console.log(token);
     const navigation = useNavigation();
     const dispatch = useDispatch();
 

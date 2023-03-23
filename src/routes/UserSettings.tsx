@@ -123,10 +123,10 @@ export default function UserSettings() {
                 imgRef!.current!.src = data;
             });
 
-            setAvatarFile(
-                new Blob([encoder.encode(ava.toString())], {
-                    type: "image/svg+xml",
-                })
+            ava.toArrayBuffer().then((arrayBuffer) =>
+                setAvatarFile(
+                    new Blob([arrayBuffer], { type: "image/svg+xml" })
+                )
             );
         }
     }, [avatarIndex, seed, user]);
@@ -155,8 +155,10 @@ export default function UserSettings() {
         const formData = new FormData(e.currentTarget);
         if (avatarFile) formData.append("profilePicture", avatarFile);
 
-        console.log(avatarFile);
-
+        for (const [key, value] of formData) {
+            if (typeof value === "string" && !value.trim())
+                formData.delete(key);
+        }
         console.log(Object.fromEntries(formData));
 
         setLoading(true);
@@ -244,7 +246,7 @@ export default function UserSettings() {
                         predicate={contactLinkValidator}
                         ref={contactLinkRef}
                     />
-                    <Input
+                    {/* <Input
                         label="Email"
                         inputOptions={{
                             type: "email",
@@ -253,7 +255,7 @@ export default function UserSettings() {
                         }}
                         predicate={emailValidator}
                         ref={emailRef}
-                    />
+                    /> */}
                     <Input
                         label="Password"
                         inputOptions={{
