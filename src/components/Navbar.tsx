@@ -64,12 +64,13 @@ export default function Navbar() {
                     <div className={styles["left-side"]}>
                         {!isMobile && (
                             <>
-                                {" "}
-                                <img
-                                    src={logo}
-                                    alt="logo"
-                                    className={styles["logo"]}
-                                />
+                                <Link to="/">
+                                    <img
+                                        src={logo}
+                                        alt="logo"
+                                        className={styles["logo"]}
+                                    />
+                                </Link>
                             </>
                         )}
                         <NavLink
