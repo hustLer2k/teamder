@@ -1,0 +1,164 @@
+.description {
+    font: 400 1.2rem/1.69 Inter, "sans-serif";
+    color: #666;
+    letter-spacing: -0.02rem;
+}
+
+.buttons {
+    display: flex;
+    max-width: 50rem;
+    width: 90%;
+
+    flex-wrap: wrap;
+    margin: 4rem auto;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.buttons a {
+    display: block;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    font: 500 1.2rem Inter, "sans-serif";
+    padding: 0.69rem 1rem;
+    border-radius: 6px;
+    width: 12rem;
+}
+
+.create_button {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+.create_button:hover {
+    background-color: white;
+    color: black;
+}
+
+a.view_button {
+    color: black;
+    background-color: white;
+    background-image: linear-gradient(
+        to right,
+        hsla(0, 0%, 100%, 0.8),
+        hsla(0, 0%, 100%, 0.8)
+    );
+
+    position: relative;
+    z-index: 10;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+    padding: 0;
+}
+
+.view_button span {
+    display: block;
+    background-color: white;
+    width: 100%;
+    padding: 0.69rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+.view_button:hover span {
+    background-image: linear-gradient(
+        165deg,
+        rgb(121, 40, 202),
+        rgb(255, 0, 128)
+    );
+
+    color: white;
+    padding: 0.69rem 1rem;
+}
+
+.view_button:after {
+    transition: all 0.2s ease;
+    content: "";
+    position: absolute;
+    background-clip: padding-box;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    animation: ViewButtonAnimation 12s linear infinite;
+    background-image: linear-gradient(
+        165deg,
+        rgb(0, 124, 240),
+        rgb(0, 223, 216)
+    );
+    border-radius: inherit;
+    transform: scale(1, 1.2);
+    filter: blur(18px);
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.section_title {
+    font: 700 3.75rem Inter, "sans-serif";
+    letter-spacing: -0.05rem;
+    text-align: center;
+}
+
+@media (min-width: 1200px) {
+    .description {
+        font-size: 1.5rem;
+    }
+}
+
+@keyframes ViewButtonAnimation {
+    from {
+        filter: blur(10px);
+        opacity: 0;
+    }
+
+    16.5% {
+        background-image: linear-gradient(
+            165deg,
+            rgb(0, 124, 240),
+            rgb(0, 223, 216)
+        );
+        filter: blur(18px);
+        opacity: 1;
+    }
+
+    33.3% {
+        filter: blur(10px);
+        opacity: 0;
+    }
+
+    49.95% {
+        background-image: linear-gradient(
+            165deg,
+            rgb(121, 40, 202),
+            rgb(255, 0, 128)
+        );
+        filter: blur(18px);
+        opacity: 1;
+    }
+
+    66.6% {
+        filter: blur(10px);
+        opacity: 0;
+    }
+
+    83.25% {
+        background-image: linear-gradient(
+            165deg,
+            rgb(216, 181, 255),
+            rgb(30, 174, 152)
+        );
+        filter: blur(18px);
+        opacity: 1;
+    }
+
+    to {
+        background-image: linear-gradient(
+            165deg,
+            rgb(216, 181, 255),
+            rgb(30, 174, 152)
+        );
+        filter: blur(10px);
+        opacity: 0;
+    }
+}

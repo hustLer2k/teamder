@@ -2,7 +2,7 @@ import styles from "./Navbar.module.css";
 import logo from "../assets/logo.png";
 import defaultAvatar from "../assets/avatar.svg";
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { FiMenu } from "react-icons/fi";
 import useToken from "../hooks/useToken";
@@ -53,7 +53,9 @@ export default function Navbar() {
                         onClick={clickHandler}
                     />
 
-                    <img src={logo} alt="logo" className={styles["logo"]} />
+                    <Link to="/">
+                        <img src={logo} alt="logo" className={styles["logo"]} />
+                    </Link>
                 </div>
             )}
 
@@ -68,7 +70,6 @@ export default function Navbar() {
                                     alt="logo"
                                     className={styles["logo"]}
                                 />
-                                {/* <h2 className={styles["header"]}>Teamder</h2>{" "} */}
                             </>
                         )}
                         <NavLink

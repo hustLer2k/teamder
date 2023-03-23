@@ -2,6 +2,7 @@ import styles from "./CreateProject.module.css";
 import Roles from "../components/Roles";
 import useToken from "../hooks/useToken";
 import { useState, useRef } from "react";
+import RedirectPage from "../components/RedirectPage";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 
@@ -10,7 +11,6 @@ export default function CreateProject() {
     const [roles, setRoles] = useState<string[]>([]);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-
     const navigate = useNavigate();
 
     const roleInput = useRef<HTMLInputElement>(null);
@@ -90,6 +90,10 @@ export default function CreateProject() {
             .catch((err) => setError(err.message))
             .finally(() => setLoading(false));
     };
+
+    if (!token) {
+        return <RedirectPage />;
+    }
 
     return (
         <div className={styles.container}>

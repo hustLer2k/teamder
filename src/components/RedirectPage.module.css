@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--color-background);
+}
+
+.title {
+    font: 700 3.75rem Inter, "sans-serif";
+}
+
+.link {
+    font: 500 1.2rem Inter, "sans-serif";
+    text-decoration: none;
+    color: var(--color-text);
+    transition: all 0.2s ease;
+}
+.link:hover {
+    color: hsl(221, 39%, 26%);
+}

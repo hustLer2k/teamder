@@ -1,0 +1,39 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* --gradient-colors: rgb(0, 124, 240), rgb(0, 223, 216); */
+}
+
+.line {
+    display: block;
+    height: 100px;
+    width: 1px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), var(--gradient-colors));
+}
+
+.index {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font: 700 1rem Inter, "sans-serif";
+    width: 40px;
+    height: 40px;
+    padding: 1rem;
+    border-radius: 100%;
+    background-image: linear-gradient(90deg, var(--gradient-colors));
+}
+
+.label {
+    margin: 1rem 0;
+    font: 700 2rem Inter, "sans-serif";
+}
+
+.label span {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(90deg, var(--gradient-colors));
+}

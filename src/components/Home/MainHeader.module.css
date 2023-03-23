@@ -1,0 +1,149 @@
+.title {
+    background-clip: text;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    text-align: center;
+
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+}
+
+.title span {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+
+    position: relative;
+    z-index: 1;
+
+    -gradient-opacity: 0;
+    --black-opacity: 1;
+}
+
+@property --gradient-opacity {
+    syntax: "<number>";
+    initial-value: 0;
+    inherits: false;
+}
+
+@property --black-opacity {
+    syntax: "<number>";
+    initial-value: 0;
+    inherits: false;
+}
+
+.first_word {
+    background-image: linear-gradient(
+            to right,
+            rgba(0, 124, 240, var(--gradient-opacity)),
+            rgba(0, 223, 216, var(--gradient-opacity))
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, var(--black-opacity)),
+            rgba(0, 0, 0, var(--black-opacity))
+        );
+
+    animation: WordGradient 12s linear infinite;
+}
+
+.second_word {
+    background-image: linear-gradient(
+            to right,
+            rgba(121, 40, 202, var(--gradient-opacity)),
+            rgba(255, 0, 128, var(--gradient-opacity))
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, var(--black-opacity)),
+            rgba(0, 0, 0, var(--black-opacity))
+        );
+
+    animation: WordGradient2 12s linear infinite;
+}
+
+.third_word {
+    background-image: linear-gradient(
+            to right,
+            rgba(216, 181, 255, var(--gradient-opacity)),
+            rgba(30, 174, 152, var(--gradient-opacity))
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, var(--black-opacity)),
+            rgba(0, 0, 0, var(--black-opacity))
+        );
+
+    animation: WordGradient3 12s linear infinite;
+}
+
+@keyframes WordGradient {
+    from {
+        --gradient-opacity: 0;
+        --black-opacity: 1;
+    }
+
+    16.6% {
+        --gradient-opacity: 1;
+        --black-opacity: 0;
+    }
+
+    33.3%,
+    to {
+        --gradient-opacity: 0;
+        --black-opacity: 1;
+    }
+}
+
+@keyframes WordGradient2 {
+    from,
+    33.3% {
+        --gradient-opacity: 0;
+        --black-opacity: 1;
+    }
+
+    49.95% {
+        --gradient-opacity: 1;
+        --black-opacity: 0;
+    }
+
+    66.6%,
+    to {
+        --gradient-opacity: 0;
+        --black-opacity: 1;
+    }
+}
+
+@keyframes WordGradient3 {
+    from,
+    66.6% {
+        --gradient-opacity: 0;
+        --black-opacity: 1;
+    }
+
+    83.25% {
+        --gradient-opacity: 1;
+        --black-opacity: 0;
+    }
+
+    to {
+        --gradient-opacity: 0;
+        --black-opacity: 1;
+    }
+}
+
+@media (min-width: 1269px) {
+    .title {
+        font-size: 6rem;
+    }
+}
+
+@media (max-width: 980px) {
+    .title {
+        flex-direction: column;
+    }
+}

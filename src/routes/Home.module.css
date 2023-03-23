@@ -1,97 +1,17 @@
 .wrapper {
-    height: 100vh;
+    min-height: 100vh;
     padding: 4rem 1.5rem;
     text-align: center;
     font-family: Inter, "sans-serif";
-}
-
-.hero_texts h1 {
-    background-clip: text;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-
-    font-size: 4rem;
-    font-weight: 800;
-    letter-spacing: -0.06em;
-}
-
-.hero_texts h1 span > span {
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    user-select: none;
-
-    position: relative;
-    z-index: 1;
-}
-
-.background::before {
-    position: absolute;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    content: "Join.";
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(to right, #007cf0, #00dfd8);
-    z-index: -1;
-
-    animation: PseudoGradient 8s linear infinite;
-}
-
-.first_word {
-    --start-color: #007cf0;
-    --end-color: #00dfd8;
-    animation: WordGradient 8s linear infinite;
-}
-
-.second_word {
-    --start-color: #7928ca;
-    --end-color: #ff0080;
-    animation: WordGradient 4s linear infinite;
-}
-
-.third_word {
-    --start-color: #5c258d;
-    --end-color: #4389a2;
-    animation: WordGradient 4s linear infinite;
-}
-
-@keyframes WordGradient {
-    0% {
-        background-image: linear-gradient(
-            to right,
-            var(--start-color),
-            var(--end-color)
-        );
-    }
-
-    100% {
-        background-color: black;
-    }
-}
-
-@keyframes PseudoGradient {
-    0% {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0%);
-    }
+    background-color: white;
+    --first-gr-colors: rgb(0, 124, 240), rgb(0, 223, 216);
+    --second-gr-colors: rgb(121, 40, 202), rgb(255, 0, 128);
+    --third-gr-colors: rgb(216, 181, 255), rgb(30, 174, 152);
 }
 
 @media (min-width: 1269px) {
-    .wrapper {
+    /* .wrapper {
         margin-left: 3%;
         margin-right: 3%;
-    }
-
-    .hero_texts h1 {
-        font-size: 6rem;
-    }
+    } */
 }

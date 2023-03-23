@@ -1,16 +1,13 @@
 import styles from "./Home.module.css";
+import MainHeader from "../components/Home/MainHeader";
+import Description from "../components/Home/Description";
 
 export default function Home() {
     return (
         <div className={styles.wrapper}>
             <div className={styles.hero_texts}>
-                <h1 aria-label="Join. Collaborate. Succeed">
-                    <span className={styles.background}>
-                        <span className={styles.first_word}>Join.</span>
-                    </span>
-                    {/* <span className={styles.second_word}>Collaborate.</span>
-                    <span className={styles.third_word}>Succeed.</span> */}
-                </h1>
+                <MainHeader />
+                <Description />
             </div>
         </div>
     );
