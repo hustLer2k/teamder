@@ -10,7 +10,8 @@
 }
 
 .wrapper img {
-    width: 50%;
+    width: 90%;
+    max-width: 50rem;
     object-fit: cover;
 }
 
