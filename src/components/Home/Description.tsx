@@ -1,6 +1,7 @@
 import styles from "./Description.module.css";
 import { Link } from "react-router-dom";
 import SectionLabel from "./SectionLabel";
+import code_collaboration from "../../assets/code_collaboration.svg";
 
 export default function Description() {
     return (

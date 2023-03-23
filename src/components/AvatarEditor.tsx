@@ -28,7 +28,7 @@ const AvatarEditor = forwardRef(function (
         if (!file) return;
 
         const extension = getExtension(file.name);
-        if (extension !== ".png") {
+        if (![".png", ".jpg", ".jpeg", ".svg"].includes(extension)) {
             onError(`Filetype not supported: ${extension}`);
             return;
         } else if (file.size > 8 * 1024 * 1024) {
