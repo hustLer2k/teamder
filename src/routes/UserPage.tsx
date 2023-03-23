@@ -54,7 +54,7 @@ export default function UserPage() {
             <div className={styles.placeholder}>
                 <h2>You don't have any projects yet</h2>
                 <ArrowedLink
-                    to="/project/create"
+                    to="/projects/create"
                     text="Create your first project"
                 />
             </div>

@@ -153,13 +153,14 @@ export default function UserSettings() {
         }
 
         const formData = new FormData(e.currentTarget);
-        if (avatarFile) formData.append("profilePicture", avatarFile);
+        if (avatarFile)
+            formData.append("profilePicture", avatarFile, "lol.svg");
 
-        for (const [key, value] of formData) {
-            if (typeof value === "string" && !value.trim())
+        for (const [key, value] of formData.entries()) {
+            if (value === "" || value === null) {
                 formData.delete(key);
+            }
         }
-        console.log(Object.fromEntries(formData));
 
         setLoading(true);
         setError("");
@@ -236,7 +237,7 @@ export default function UserSettings() {
                         inputOptions={{ required: false, name: "username" }}
                         ref={usernameRef}
                     />
-                    <Input
+                    {/* <Input
                         label="Contact link"
                         inputOptions={{
                             type: "url",
@@ -245,7 +246,7 @@ export default function UserSettings() {
                         }}
                         predicate={contactLinkValidator}
                         ref={contactLinkRef}
-                    />
+                    /> */}
                     {/* <Input
                         label="Email"
                         inputOptions={{
@@ -256,7 +257,7 @@ export default function UserSettings() {
                         predicate={emailValidator}
                         ref={emailRef}
                     /> */}
-                    <Input
+                    {/* <Input
                         label="Password"
                         inputOptions={{
                             type: "password",
@@ -265,7 +266,7 @@ export default function UserSettings() {
                         }}
                         predicate={passwordValidator}
                         ref={passwordRef}
-                    />
+                    /> */}
 
                     {<p className={styles.error}>{error}</p>}
 
