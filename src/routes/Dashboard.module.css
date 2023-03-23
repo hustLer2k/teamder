@@ -1,5 +1,6 @@
 .dashboard {
     width: 100%;
+    min-height: 100vh;
 }
 
 .dashboard > nav {
@@ -10,7 +11,7 @@
     background-color: #f9f9f9;
     padding: 10px;
     padding-top: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 
     width: 100%;
     background-color: white;

@@ -1,10 +1,5 @@
 import styles from "./Dashboard.module.css";
-import Spinner from "../components/Spinner";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
-import Application from "../components/Application";
 import { NavLink, Outlet } from "react-router-dom";
-import Pagination from "../components/Pagination";
 
 export default function Dashboard() {
     return (

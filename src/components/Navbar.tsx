@@ -1,5 +1,6 @@
 import styles from "./Navbar.module.css";
 import logo from "../assets/logo.png";
+import defaultAvatar from "../assets/avatar.svg";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
@@ -133,7 +134,7 @@ export default function Navbar() {
                             >
                                 <img
                                     className={styles.avatar}
-                                    src={avatarURL || logo}
+                                    src={avatarURL || defaultAvatar}
                                     alt="Avatar"
                                 />
                             </NavLink>

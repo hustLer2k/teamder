@@ -1,4 +1,5 @@
 import styles from "./UserCard.module.css";
+import defaultAvatar from "../assets/avatar.svg";
 import { Link } from "react-router-dom";
 
 export default function UserCard({
@@ -14,13 +15,7 @@ export default function UserCard({
 }) {
     const children = (
         <>
-            <img
-                src={
-                    profilePictureUrl ||
-                    "https://teamder-dev.herokuapp.com/api/mock/img"
-                }
-                alt="Profile"
-            />
+            <img src={profilePictureUrl || defaultAvatar} alt="Profile" />
             {username && <p>{username}</p>}
             {role && <h4>{role}</h4>}
         </>
