@@ -64,7 +64,7 @@ const AvatarEditor = forwardRef(function (
                 hidden
                 onChange={fileChangeHandler}
                 ref={fileInputRef}
-                accept="image/png"
+                accept=".png, .jpg, .jpeg, .svg"
             />
         </>
     );
